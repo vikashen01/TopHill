@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Mail, ArrowRight, ShieldCheck, Lock } from 'lucide-react';
+import { Menu, X, Phone, Mail, ArrowRight, ShieldCheck } from 'lucide-react';
 import { InstagramIcon as Instagram, FacebookIcon as Facebook } from './SocialIcons';
 import BrandLogo from './BrandLogo';
 
@@ -101,32 +101,6 @@ export default function Header({ currentRoute, navigateTo }) {
                 <span>Top Hill</span>
               </a>
             </div>
-
-            {/* Direct Admin Portal Button in Topbar */}
-            <span className="topbar-divider">|</span>
-            <button
-              type="button"
-              onClick={() => handleNavClick('admin')}
-              className="topbar-admin-btn"
-              title="Access Admin Management Portal"
-              style={{
-                background: 'rgba(199, 164, 106, 0.25)',
-                border: '1px solid #C7A46A',
-                color: '#FFDF00',
-                padding: '0.2rem 0.65rem',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                fontSize: '0.75rem',
-                fontWeight: '700',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                transition: 'all 0.2s ease'
-              }}
-            >
-              <Lock size={12} />
-              <span>Admin Portal</span>
-            </button>
           </div>
         </div>
       </div>
@@ -227,20 +201,6 @@ export default function Header({ currentRoute, navigateTo }) {
                   </li>
                 );
               })}
-              {/* Admin Link in Mobile Menu */}
-              <li>
-                <button
-                  type="button"
-                  className="mobile-nav-link"
-                  onClick={() => handleNavClick('admin')}
-                  style={{ color: '#C2185B', fontWeight: '700' }}
-                >
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <Lock size={16} /> Admin Portal (Staff Only)
-                  </span>
-                  <ArrowRight size={16} className="mobile-arrow" />
-                </button>
-              </li>
             </ul>
 
             <div className="mobile-menu-cta">
