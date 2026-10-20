@@ -10,10 +10,8 @@ import ProcessPage from './pages/ProcessPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
-import AdminPage from './pages/AdminPage';
 import './App.css';
 import './myntra.css';
-import './admin.css';
 
 export default function App() {
   const [currentRoute, setCurrentRoute] = useState('home');
@@ -32,8 +30,7 @@ export default function App() {
         'process', 
         'contact', 
         'privacy-policy', 
-        'terms-conditions',
-        'admin'
+        'terms-conditions'
       ];
       
       if (validRoutes.includes(hash)) {
@@ -58,8 +55,7 @@ export default function App() {
       'process': 'Our Process | TopHill Textile',
       'contact': 'Contact Us | TopHill Textile Pvt. Ltd.',
       'privacy-policy': 'Privacy Policy | TopHill Textile',
-      'terms-conditions': 'Terms & Conditions | TopHill Textile',
-      'admin': 'Admin Portal | TopHill Textile Management Dashboard'
+      'terms-conditions': 'Terms & Conditions | TopHill Textile'
     };
 
     document.title = titleMap[currentRoute] || 'TopHill Textile | Garment Business Solutions';
@@ -110,8 +106,6 @@ export default function App() {
         return <PrivacyPolicyPage navigateTo={navigateTo} />;
       case 'terms-conditions':
         return <TermsPage navigateTo={navigateTo} />;
-      case 'admin':
-        return <AdminPage navigateTo={navigateTo} />;
       default:
         return <HomePage navigateTo={navigateTo} onSelectPlan={handleSelectPlan} />;
     }
@@ -119,13 +113,11 @@ export default function App() {
 
   return (
     <div className="site-wrapper">
-      {currentRoute !== 'admin' && (
-        <Header currentRoute={currentRoute} navigateTo={navigateTo} />
-      )}
+      <Header currentRoute={currentRoute} navigateTo={navigateTo} />
       <main id="main-content" tabIndex="-1">
         {renderCurrentPage()}
       </main>
-      {currentRoute !== 'admin' && <Footer navigateTo={navigateTo} />}
+      <Footer navigateTo={navigateTo} />
       <BackToTop />
     </div>
   );

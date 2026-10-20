@@ -22,24 +22,10 @@ TopHill Textile Pvt. Ltd. is a structured, reliable partner coordinating:
    - **Basic Plan:** ₹10,00,000/- (30 SKU)
    - **Premium Plan:** ₹25,00,000/- (100 SKU) &bull; *Most Popular*
    - **Enterprise Plan:** ₹50,00,000/- (300 SKU)
-6. **Admin Management Portal**:
-   - Secure login gate
-   - Dashboard KPI metrics (Total Inquiries, New/Pending, Converted, Myntra Plans)
-   - Inquiries Table with real-time search & filters
-   - Detail drawer with internal admin follow-up notes
-   - Direct 1-click WhatsApp and Phone communication
-   - Export client leads to CSV/Excel
-   - Add manual leads for phone/walk-in clients
-
----
-
-## 🔐 Admin Portal Access
-
-- **Portal URL:** `http://localhost:5173/#/admin` (or click **"Admin Portal"** at the bottom of the footer)
-- **Demo Credentials:**
-  - **Email:** `admin@tophilltextile.com` (or username `admin`)
-  - **Password:** `admin123`
-  - *(Includes a 1-click Auto-fill Demo Login helper button on the login screen)*
+6. **Supabase Cloud Backend Integration**:
+   - Real-time client inquiries and leads storage in Postgres
+   - High availability hosted in Mumbai, India (`ap-south-1`)
+   - Direct WhatsApp, telephone desk & email liaison channels
 
 ---
 
@@ -86,12 +72,11 @@ TopHill Textile Pvt. Ltd. is a structured, reliable partner coordinating:
 │   │   ├── ProcessPage.jsx       # 6-step workflow from discussion to Myntra QC pass
 │   │   ├── ContactPage.jsx       # Functional form, WhatsApp button, Google Maps embed
 │   │   ├── PrivacyPolicyPage.jsx # Informational corporate privacy policy
-│   │   ├── TermsPage.jsx         # Informational website terms of use
-│   │   └── AdminPage.jsx         # Admin management portal & leads dashboard
+│   │   └── TermsPage.jsx         # Informational website terms of use
 │   ├── App.jsx                   # Client routing, hash sync, plan pre-fill state
 │   ├── App.css                   # Global styles & responsive layout
 │   ├── myntra.css                # Myntra plans, yellow highlight, and top brands styles
-│   ├── admin.css                 # Admin portal, KPIs, table, and modal styles
+│   ├── supabaseClient.js         # Supabase client SDK integration
 │   ├── index.css                 # Design tokens and resets
 │   └── main.jsx
 ├── index.html                    # SEO tags, OpenGraph, JSON-LD schema with GSTIN & address

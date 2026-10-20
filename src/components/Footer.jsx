@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, FileText, ArrowRight, Shield, AlertCircle, Lock } from 'lucide-react';
+import { Mail, Phone, MapPin, FileText, ArrowRight, Shield, AlertCircle } from 'lucide-react';
 import { InstagramIcon as Instagram, FacebookIcon as Facebook } from './SocialIcons';
 import BrandLogo from './BrandLogo';
 
@@ -202,11 +202,6 @@ export default function Footer({ navigateTo }) {
             <button type="button" className="legal-link-btn" onClick={() => handleNav('terms-conditions')}>
               <FileText size={13} style={{ display: 'inline', marginRight: '4px' }} />
               Terms &amp; Conditions
-            </button>
-            <span className="footer-dot">&bull;</span>
-            <button type="button" className="legal-link-btn" onClick={() => handleNav('admin')} title="Executive Management Portal">
-              <Lock size={13} style={{ display: 'inline', marginRight: '4px', color: 'var(--color-accent)' }} />
-              Admin Portal
             </button>
           </div>
         </div>
