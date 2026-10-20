@@ -10,8 +10,10 @@ import ProcessPage from './pages/ProcessPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
+import AdminPage from './pages/AdminPage';
 import './App.css';
 import './myntra.css';
+import './admin.css';
 
 export default function App() {
   const [currentRoute, setCurrentRoute] = useState('home');
@@ -30,7 +32,8 @@ export default function App() {
         'process', 
         'contact', 
         'privacy-policy', 
-        'terms-conditions'
+        'terms-conditions',
+        'admin'
       ];
       
       if (validRoutes.includes(hash)) {
@@ -55,7 +58,8 @@ export default function App() {
       'process': 'Our Process | TopHill Textile',
       'contact': 'Contact Us | TopHill Textile Pvt. Ltd.',
       'privacy-policy': 'Privacy Policy | TopHill Textile',
-      'terms-conditions': 'Terms & Conditions | TopHill Textile'
+      'terms-conditions': 'Terms & Conditions | TopHill Textile',
+      'admin': 'Admin Portal | TopHill Textile Management Dashboard'
     };
 
     document.title = titleMap[currentRoute] || 'TopHill Textile | Garment Business Solutions';
@@ -64,7 +68,22 @@ export default function App() {
   const navigateTo = (routeId) => {
     setCurrentRoute(routeId);
     window.location.hash = `#/${routeId}`;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (routeId === 'contact') {
+      setTimeout(() => {
+        const formEl = document.getElementById('inquiry-form-card');
+        if (formEl) {
+          const yOffset = -85;
+          const y = formEl.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+          const firstInput = document.getElementById('fullName');
+          if (firstInput) firstInput.focus({ preventScroll: true });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 180);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const handleSelectPlan = (plan) => {
@@ -91,6 +110,8 @@ export default function App() {
         return <PrivacyPolicyPage navigateTo={navigateTo} />;
       case 'terms-conditions':
         return <TermsPage navigateTo={navigateTo} />;
+      case 'admin':
+        return <AdminPage navigateTo={navigateTo} />;
       default:
         return <HomePage navigateTo={navigateTo} onSelectPlan={handleSelectPlan} />;
     }
@@ -98,11 +119,13 @@ export default function App() {
 
   return (
     <div className="site-wrapper">
-      <Header currentRoute={currentRoute} navigateTo={navigateTo} />
+      {currentRoute !== 'admin' && (
+        <Header currentRoute={currentRoute} navigateTo={navigateTo} />
+      )}
       <main id="main-content" tabIndex="-1">
         {renderCurrentPage()}
       </main>
-      <Footer navigateTo={navigateTo} />
+      {currentRoute !== 'admin' && <Footer navigateTo={navigateTo} />}
       <BackToTop />
     </div>
   );

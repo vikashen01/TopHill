@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Building2, 
   MapPin, 
@@ -7,18 +7,26 @@ import {
   FileText, 
   Send, 
   CheckCircle2, 
-  AlertCircle, 
   MessageCircle, 
-  Clock, 
   ShieldCheck, 
   Eye, 
   Trash2, 
   RefreshCw,
-  Sparkles
+  Sparkles,
+  Database,
+  ArrowDown
 } from 'lucide-react';
 import { InstagramIcon as Instagram, FacebookIcon as Facebook } from '../components/SocialIcons';
+import { 
+  insertInquiry, 
+  getInquiries, 
+  checkSupabaseHealth, 
+  PROJECT_DETAILS 
+} from '../supabaseClient';
 
 export default function ContactPage({ initialInquiryType = 'General Inquiry', initialPlan = null }) {
+  const formCardRef = useRef(null);
+  const [isFormFocused, setIsFormFocused] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
     companyName: '',
@@ -36,8 +44,24 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
   const [submittedInquiry, setSubmittedInquiry] = useState(null);
   const [storedInquiries, setStoredInquiries] = useState([]);
   const [showInquiryLog, setShowInquiryLog] = useState(false);
+  const [cloudStatus, setCloudStatus] = useState({ connected: true, latency: null });
 
-  // Sync if initial props change
+  // Smooth slide directly down to the form
+  const scrollToForm = () => {
+    if (formCardRef.current) {
+      const yOffset = -85;
+      const y = formCardRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      setIsFormFocused(true);
+      setTimeout(() => {
+        const input = document.getElementById('fullName');
+        if (input) input.focus({ preventScroll: true });
+      }, 500);
+      setTimeout(() => setIsFormFocused(false), 3000);
+    }
+  };
+
+  // Sync if initial props change and automatically slide to form
   useEffect(() => {
     if (initialPlan) {
       setFormData((prev) => ({
@@ -48,18 +72,45 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
     } else if (initialInquiryType) {
       setFormData((prev) => ({ ...prev, natureOfInquiry: initialInquiryType }));
     }
+
+    const t = setTimeout(scrollToForm, 250);
+    return () => clearTimeout(t);
   }, [initialInquiryType, initialPlan]);
 
-  // Load inquiries from localStorage on mount
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem('tophill_inquiries_log');
-      if (stored) {
-        setStoredInquiries(JSON.parse(stored));
+  // Load inquiries from Supabase with fallback to localStorage
+  const loadInquiries = async () => {
+    // Check health
+    const health = await checkSupabaseHealth();
+    setCloudStatus({ connected: health.healthy, latency: health.latency });
+
+    const res = await getInquiries({ limit: 20 });
+    if (res.success && res.data.length > 0) {
+      const formatted = res.data.map(item => ({
+        id: item.inquiry_ref || item.id,
+        fullName: item.full_name,
+        companyName: item.company_name || 'Individual',
+        phoneNumber: item.phone_number,
+        emailAddress: item.email_address,
+        natureOfInquiry: item.nature_of_inquiry,
+        message: item.message,
+        timestamp: item.created_at ? new Date(item.created_at).toLocaleString('en-IN') : 'Recent',
+        synced: true
+      }));
+      setStoredInquiries(formatted);
+    } else {
+      try {
+        const stored = localStorage.getItem('tophill_inquiries_log');
+        if (stored) {
+          setStoredInquiries(JSON.parse(stored));
+        }
+      } catch (e) {
+        console.warn('Storage read error', e);
       }
-    } catch (e) {
-      console.warn('Storage read error', e);
     }
+  };
+
+  useEffect(() => {
+    loadInquiries();
   }, []);
 
   const handleChange = (e) => {
@@ -104,7 +155,7 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validate()) {
@@ -113,39 +164,47 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
 
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      const inquiryRecord = {
-        id: `THT-${Date.now().toString().slice(-6)}`,
-        fullName: formData.fullName.trim(),
-        companyName: formData.companyName.trim() || 'Not Provided',
-        phoneNumber: formData.phoneNumber.trim(),
-        emailAddress: formData.emailAddress.trim(),
-        natureOfInquiry: formData.natureOfInquiry,
-        message: formData.message.trim(),
-        timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
-      };
+    const refId = `THT-${Date.now().toString().slice(-6)}`;
+    const inquiryRecord = {
+      id: refId,
+      inquiryRef: refId,
+      fullName: formData.fullName.trim(),
+      companyName: formData.companyName.trim() || 'Not Provided',
+      phoneNumber: formData.phoneNumber.trim(),
+      emailAddress: formData.emailAddress.trim(),
+      natureOfInquiry: formData.natureOfInquiry,
+      message: formData.message.trim(),
+      timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+    };
 
-      const updatedList = [inquiryRecord, ...storedInquiries];
-      try {
-        localStorage.setItem('tophill_inquiries_log', JSON.stringify(updatedList));
-      } catch (err) {
-        console.warn('Storage save error', err);
-      }
+    // Insert to Supabase Cloud Database
+    const res = await insertInquiry(inquiryRecord);
 
-      setStoredInquiries(updatedList);
-      setSubmittedInquiry(inquiryRecord);
-      setIsSubmitting(false);
+    // Save to local state and local backup
+    const updatedList = [{ ...inquiryRecord, synced: res.success }, ...storedInquiries];
+    try {
+      localStorage.setItem('tophill_inquiries_log', JSON.stringify(updatedList));
+    } catch (err) {
+      console.warn('Storage save error', err);
+    }
 
-      setFormData({
-        fullName: '',
-        companyName: '',
-        phoneNumber: '',
-        emailAddress: '',
-        natureOfInquiry: 'General Inquiry',
-        message: '',
-        honeypot: ''
-      });
-    }, 700);
+    setStoredInquiries(updatedList);
+    setSubmittedInquiry({
+      ...inquiryRecord,
+      cloudSynced: res.success,
+      cloudError: res.error
+    });
+    setIsSubmitting(false);
+
+    setFormData({
+      fullName: '',
+      companyName: '',
+      phoneNumber: '',
+      emailAddress: '',
+      natureOfInquiry: 'General Inquiry',
+      message: '',
+      honeypot: ''
+    });
   };
 
   const handleClearLog = () => {
@@ -164,6 +223,15 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
             <p className="page-hero-subtitle">
               Reach out for garment manufacturing coordination, Myntra onboarding to QC pass, and Myntra business growth plan inquiries.
             </p>
+            <button
+              type="button"
+              className="btn btn-accent btn-sm hero-direct-form-btn"
+              onClick={scrollToForm}
+              style={{ marginTop: '1.25rem', display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}
+            >
+              <span>Fill Business Inquiry Form Directly</span>
+              <ArrowDown size={15} />
+            </button>
           </div>
         </div>
       </section>
@@ -328,7 +396,16 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
 
             {/* Right Column: Functional Inquiry Form */}
             <div className="contact-form-col">
-              <div className="inquiry-form-card">
+              <div 
+                ref={formCardRef} 
+                id="inquiry-form-card" 
+                className={`inquiry-form-card ${isFormFocused ? 'form-slide-focus' : ''}`}
+              >
+                <div className={`form-direct-attention-bar ${isFormFocused ? 'pulse' : ''}`}>
+                  <Sparkles size={16} className="sparkle-pulse" />
+                  <span>Direct Business Inquiry Desk &bull; Fill Details Below</span>
+                </div>
+
                 <div className="form-card-header">
                   <div className="form-header-badge">
                     <Send size={15} />
@@ -358,10 +435,20 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
                   <div className="inquiry-success-banner" role="alert">
                     <CheckCircle2 size={24} className="success-icon" />
                     <div>
-                      <h4 className="success-title">Inquiry Successfully Recorded</h4>
+                      <h4 className="success-title">
+                        {submittedInquiry.cloudSynced 
+                          ? 'Inquiry Recorded to Supabase Cloud Database' 
+                          : 'Inquiry Recorded'}
+                      </h4>
                       <p className="success-text">
-                        Thank you, <strong>{submittedInquiry.fullName}</strong>. Your inquiry has been stored with reference ID: <strong>{submittedInquiry.id}</strong>.
+                        Thank you, <strong>{submittedInquiry.fullName}</strong>. Your inquiry has been securely stored with Reference ID: <strong>{submittedInquiry.id}</strong>.
                       </p>
+                      {submittedInquiry.cloudSynced && (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', color: '#166534', margin: '6px 0' }}>
+                          <Database size={14} />
+                          <span>Synced with Supabase Backend ({PROJECT_DETAILS.region})</span>
+                        </div>
+                      )}
                       <p className="success-sub">
                         Our coordination desk at Sector 63, Noida will review your requirements and connect with you via email ({submittedInquiry.emailAddress}) or phone ({submittedInquiry.phoneNumber}).
                       </p>
@@ -538,8 +625,15 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
                 {/* Stored Inquiries Viewer */}
                 <div className="inquiry-storage-bar">
                   <div className="storage-status">
-                    <Clock size={14} />
-                    <span>Locally Logged Inquiries: <strong>{storedInquiries.length}</strong></span>
+                    <Database size={15} style={{ color: cloudStatus.connected ? '#10b981' : '#f59e0b' }} />
+                    <span>
+                      Supabase Cloud: <strong>{storedInquiries.length} Inquiries</strong>
+                      {cloudStatus.latency && (
+                        <span style={{ fontSize: '0.75rem', color: '#64748b', marginLeft: '6px' }}>
+                          ({cloudStatus.latency}ms)
+                        </span>
+                      )}
+                    </span>
                   </div>
                   {storedInquiries.length > 0 && (
                     <button 
@@ -557,14 +651,14 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
                 {showInquiryLog && storedInquiries.length > 0 && (
                   <div className="inquiries-inspection-box">
                     <div className="inspection-header">
-                      <strong>Stored Inquiries Log (Local Storage)</strong>
+                      <strong>Cloud &amp; Local Inquiries Log</strong>
                       <button 
                         type="button" 
                         className="btn-clear-log"
                         onClick={handleClearLog}
                         title="Clear local log"
                       >
-                        <Trash2 size={13} /> Clear Log
+                        <Trash2 size={13} /> Clear Cache
                       </button>
                     </div>
                     <div className="inspection-list">
