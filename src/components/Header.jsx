@@ -31,6 +31,7 @@ export default function Header({ currentRoute, navigateTo }) {
 
   const navItems = [
     { id: 'home', label: 'Home' },
+    { id: 'products', label: 'Our Products' },
     { id: 'about', label: 'About Us' },
     { id: 'services', label: 'Our Services' },
     { id: 'plans', label: 'Business Plans' },
@@ -39,8 +40,22 @@ export default function Header({ currentRoute, navigateTo }) {
   ];
 
   const handleNavClick = (routeId) => {
-    navigateTo(routeId);
     setIsMobileMenuOpen(false);
+    if (routeId === 'products') {
+      if (currentRoute !== 'home') {
+        navigateTo('home');
+      }
+      setTimeout(() => {
+        const el = document.getElementById('our-products');
+        if (el) {
+          const yOffset = -75;
+          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 100);
+      return;
+    }
+    navigateTo(routeId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -62,21 +77,21 @@ export default function Header({ currentRoute, navigateTo }) {
 
           <div className="topbar-right">
             <a 
-              href="mailto:tophilltextile26@gmail.com" 
+              href="mailto:tophilltextile25@gmail.com" 
               className="topbar-item topbar-link"
               title="Official Business Email"
             >
               <Mail size={13} />
-              <span>tophilltextile26@gmail.com</span>
+              <span>tophilltextile25@gmail.com</span>
             </a>
             <span className="topbar-divider">|</span>
             <a 
-              href="tel:+919899763193" 
+              href="tel:+917983597645" 
               className="topbar-item topbar-link"
               title="Official Contact Number"
             >
               <Phone size={13} />
-              <span>+91 9899763193</span>
+              <span>+91 7983597645</span>
             </a>
             <span className="topbar-divider">|</span>
             <div className="topbar-socials">
@@ -221,8 +236,8 @@ export default function Header({ currentRoute, navigateTo }) {
                 G-137, 2nd Floor, Sector 63, Noida, Uttar Pradesh-201301
               </p>
               <p className="mobile-info-text"><strong>GSTIN:</strong> 09AAMCT5200E1ZH</p>
-              <p className="mobile-info-text"><strong>Email:</strong> tophilltextile26@gmail.com</p>
-              <p className="mobile-info-text"><strong>Phone:</strong> +91 9899763193</p>
+              <p className="mobile-info-text"><strong>Email:</strong> tophilltextile25@gmail.com</p>
+              <p className="mobile-info-text"><strong>Phone:</strong> +91 7983597645</p>
             </div>
           </div>
         </div>

@@ -77,6 +77,25 @@
   box-shadow: var(--shadow-md);
 }
 
+.brand-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  margin-bottom: 0.75rem;
+  background: var(--color-bg-beige);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 4px;
+  transition: all var(--transition-smooth);
+}
+
+.brand-card-item:hover .brand-logo-wrap {
+  background: var(--color-primary-subtle);
+  border-color: var(--color-accent);
+  transform: scale(1.05);
+}
+
 .brand-num {
   font-size: 0.72rem;
   font-weight: 700;
@@ -646,3 +665,284 @@
   background: #1877F2;
   border-color: #1877F2;
 }
+
+/* ==========================================================================
+   OUR PRODUCTS SECTION STYLES
+   1. Women Garments 2. Grey Fabrics 3. Denim 4. Woven Fabrics 5. Cotton Fabrics
+   ========================================================================== */
+.our-products-section {
+  position: relative;
+}
+
+.products-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.75rem;
+}
+
+.product-filter-btn {
+  background: var(--color-bg-beige);
+  border: 1.5px solid var(--color-border);
+  color: var(--color-text-main);
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.product-filter-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.product-filter-btn.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(14, 51, 32, 0.28);
+}
+
+.products-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.product-card-item {
+  background: var(--color-white);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-smooth);
+  box-shadow: var(--shadow-sm);
+}
+
+.product-card-item:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-hover);
+}
+
+.product-card-header {
+  padding: 1.85rem 1.6rem 1.5rem;
+  color: #FFFFFF;
+  position: relative;
+}
+
+.product-card-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.product-number-tag {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.product-badge-pill {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+}
+
+.product-icon-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(212, 116, 44, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.product-title-text {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.01em;
+}
+
+.product-tagline-text {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+}
+
+.product-card-body {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-description-text {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+}
+
+.product-specs-block {
+  background: var(--color-bg-beige);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.product-specs-heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-primary);
+  display: block;
+  margin-bottom: 0.55rem;
+}
+
+.product-specs-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.product-specs-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--color-text-main);
+  line-height: 1.35;
+}
+
+.product-check-icon {
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.product-metrics-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1.35rem;
+}
+
+.metric-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-subtle);
+  margin-bottom: 2px;
+}
+
+.metric-val {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.product-card-action {
+  margin-top: auto;
+}
+
+.product-inquire-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.products-footer-box {
+  margin-top: 2.5rem;
+  background: linear-gradient(135deg, #071E12 0%, #0E3320 60%, #15472E 100%);
+  border: 1px solid rgba(212, 116, 44, 0.35);
+  border-radius: var(--radius-md);
+  padding: 2.25rem 2.5rem;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.products-footer-content {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.products-footer-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  background: rgba(212, 116, 44, 0.18);
+  border: 1px solid var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-accent);
+}
+
+.products-footer-content h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.35rem;
+}
+
+.products-footer-content p {
+  font-size: 0.88rem;
+  color: #E2DBD0;
+  margin: 0;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .products-footer-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+  .products-footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+

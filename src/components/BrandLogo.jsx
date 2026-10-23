@@ -2,7 +2,8 @@ import React from 'react';
 
 /**
  * BrandLogo Component
- * Features the official TopHill Textile Pvt. Ltd. logo provided by the company.
+ * Features the official TopHill Textile Pvt. Ltd. emblem extracted directly from corporate card
+ * and displays single clean official brand title "TOPHILL TEXTILE PVT. LTD."
  */
 export default function BrandLogo({ variant = 'default', onClick }) {
   const isLight = variant === 'light';
@@ -15,58 +16,50 @@ export default function BrandLogo({ variant = 'default', onClick }) {
         cursor: onClick ? 'pointer' : 'default', 
         display: 'inline-flex', 
         alignItems: 'center', 
-        gap: '0.85rem' 
+        gap: '0.75rem' 
       }}
     >
       <div 
         style={{
-          height: isLight ? '48px' : '52px',
-          padding: isLight ? '4px 8px' : '2px',
+          height: isLight ? '44px' : '46px',
+          padding: '2px',
           borderRadius: '8px',
-          backgroundColor: isLight ? '#FFFFFF' : 'transparent',
+          backgroundColor: isLight ? 'rgba(255, 255, 255, 0.05)' : '#0E3320',
+          border: isLight ? '1px solid rgba(212, 116, 44, 0.35)' : '1px solid rgba(212, 116, 44, 0.25)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0,
-          boxShadow: isLight ? '0 2px 8px rgba(0, 0, 0, 0.2)' : 'none'
+          overflow: 'hidden',
+          boxShadow: isLight ? '0 2px 10px rgba(0, 0, 0, 0.3)' : '0 2px 8px rgba(14, 51, 32, 0.18)'
         }}
       >
         <img 
-          src="/images/tophill-logo.jpg" 
-          alt="TopHill Textile Pvt. Ltd. Official Logo" 
+          src="/images/tophill-emblem.png" 
+          alt="TopHill Textile Pvt. Ltd." 
           style={{
             height: '100%',
             width: 'auto',
-            maxHeight: isLight ? '40px' : '48px',
+            maxHeight: isLight ? '38px' : '40px',
             objectFit: 'contain',
             display: 'block'
           }}
         />
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <span style={{
+      <span 
+        className="brand-logo-title-text"
+        style={{
           fontFamily: 'var(--font-heading)',
-          fontSize: '1.25rem',
+          fontSize: 'clamp(0.92rem, 1.9vw, 1.15rem)',
           fontWeight: '800',
           letterSpacing: '0.03em',
-          color: isLight ? '#FFFFFF' : '#641333',
-          lineHeight: 1.15
-        }}>
-          TOPHILL TEXTILE
-        </span>
-        <span style={{
-          fontSize: '0.72rem',
-          fontWeight: '600',
-          letterSpacing: '0.06em',
-          textTransform: 'uppercase',
-          color: isLight ? '#D5B582' : '#2d6a4f',
-          lineHeight: 1.2,
-          marginTop: '2px'
-        }}>
-          TopHill Textile Pvt. Ltd.
-        </span>
-      </div>
+          color: isLight ? '#FFFFFF' : 'var(--color-primary)',
+          lineHeight: 1.2
+        }}
+      >
+        TOPHILL TEXTILE PVT. LTD.
+      </span>
     </div>
   );
 }

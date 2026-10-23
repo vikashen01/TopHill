@@ -63,7 +63,11 @@ export default function TermsPage({ navigateTo }) {
                 </div>
                 <div className="info-row">
                   <div className="info-cell-label">Email:</div>
-                  <div className="info-cell-value">tophilltextile26@gmail.com</div>
+                  <div className="info-cell-value">tophilltextile25@gmail.com</div>
+                </div>
+                <div className="info-row">
+                  <div className="info-cell-label">Contact Phone:</div>
+                  <div className="info-cell-value">+91 7983597645</div>
                 </div>
               </div>
             </div>

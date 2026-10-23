@@ -283,11 +283,11 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
                   <div>
                     <span className="contact-item-label">Official Corporate Email</span>
                     <a 
-                      href="mailto:tophilltextile26@gmail.com" 
+                      href="mailto:tophilltextile25@gmail.com" 
                       className="contact-item-primary" 
                       style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}
                     >
-                      tophilltextile26@gmail.com
+                      tophilltextile25@gmail.com
                     </a>
                     <span className="contact-item-sub">Mon – Sat (10:00 AM – 6:30 PM IST)</span>
                   </div>
@@ -301,11 +301,11 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
                   <div>
                     <span className="contact-item-label">Official Contact Phone</span>
                     <a 
-                      href="tel:+919899763193" 
+                      href="tel:+917983597645" 
                       className="contact-item-primary" 
                       style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}
                     >
-                      +91 9899763193
+                      +91 7983597645
                     </a>
                     <span className="contact-item-sub">Direct telephone liaison desk</span>
                   </div>

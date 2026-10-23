@@ -65,11 +65,11 @@ export default function PrivacyPolicyPage({ navigateTo }) {
                 </div>
                 <div className="info-row">
                   <div className="info-cell-label">Official Email:</div>
-                  <div className="info-cell-value">tophilltextile26@gmail.com</div>
+                  <div className="info-cell-value">tophilltextile25@gmail.com</div>
                 </div>
                 <div className="info-row">
                   <div className="info-cell-label">Contact Phone:</div>
-                  <div className="info-cell-value">+91 9899763193</div>
+                  <div className="info-cell-value">+91 7983597645</div>
                 </div>
               </div>
             </div>

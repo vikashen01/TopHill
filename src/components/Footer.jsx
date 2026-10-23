@@ -80,6 +80,17 @@ export default function Footer({ navigateTo }) {
                   </button>
                 </li>
                 <li>
+                  <button type="button" className="footer-link-btn" onClick={() => {
+                    handleNav('home');
+                    setTimeout(() => {
+                      const el = document.getElementById('our-products');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 120);
+                  }}>
+                    <ArrowRight size={14} /> Our Products
+                  </button>
+                </li>
+                <li>
                   <button type="button" className="footer-link-btn" onClick={() => handleNav('about')}>
                     <ArrowRight size={14} /> About Us
                   </button>
@@ -157,8 +168,8 @@ export default function Footer({ navigateTo }) {
                   <Mail size={18} className="footer-icon" />
                   <div>
                     <span className="contact-label">Official Email</span>
-                    <a href="mailto:tophilltextile26@gmail.com" className="contact-value" style={{ textDecoration: 'underline' }}>
-                      tophilltextile26@gmail.com
+                    <a href="mailto:tophilltextile25@gmail.com" className="contact-value" style={{ textDecoration: 'underline' }}>
+                      tophilltextile25@gmail.com
                     </a>
                   </div>
                 </li>
@@ -166,8 +177,8 @@ export default function Footer({ navigateTo }) {
                   <Phone size={18} className="footer-icon" />
                   <div>
                     <span className="contact-label">Contact Phone</span>
-                    <a href="tel:+919899763193" className="contact-value" style={{ textDecoration: 'underline' }}>
-                      +91 9899763193
+                    <a href="tel:+917983597645" className="contact-value" style={{ textDecoration: 'underline' }}>
+                      +91 7983597645
                     </a>
                   </div>
                 </li>

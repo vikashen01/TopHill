@@ -15,8 +15,9 @@ import {
 } from 'lucide-react';
 import TopBrandsShowcase from '../components/TopBrandsShowcase';
 import MyntraPlans from '../components/MyntraPlans';
+import OurProductsSection from '../components/OurProductsSection';
 
-export default function HomePage({ navigateTo, onSelectPlan }) {
+export default function HomePage({ navigateTo, onSelectPlan, setInquiryType }) {
   const handleNav = (routeId) => {
     navigateTo(routeId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -152,6 +153,17 @@ export default function HomePage({ navigateTo, onSelectPlan }) {
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         }}
         onInquire={() => handleNav('contact')}
+      />
+
+      {/* =========================================================================
+          OUR PRODUCTS SECTION
+          1. Women Garments 2. Grey Fabrics 3. Denim 4. Woven Fabrics 5. Cotton Fabrics
+          ========================================================================= */}
+      <OurProductsSection 
+        onInquire={(subject) => {
+          if (setInquiryType) setInquiryType(subject);
+          handleNav('contact');
+        }}
       />
 
       {/* =========================================================================

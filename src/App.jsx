@@ -91,7 +91,7 @@ export default function App() {
   const renderCurrentPage = () => {
     switch (currentRoute) {
       case 'home':
-        return <HomePage navigateTo={navigateTo} onSelectPlan={handleSelectPlan} />;
+        return <HomePage navigateTo={navigateTo} onSelectPlan={handleSelectPlan} setInquiryType={setSelectedInquiryType} />;
       case 'about':
         return <AboutPage navigateTo={navigateTo} />;
       case 'services':
@@ -107,7 +107,7 @@ export default function App() {
       case 'terms-conditions':
         return <TermsPage navigateTo={navigateTo} />;
       default:
-        return <HomePage navigateTo={navigateTo} onSelectPlan={handleSelectPlan} />;
+        return <HomePage navigateTo={navigateTo} onSelectPlan={handleSelectPlan} setInquiryType={setSelectedInquiryType} />;
     }
   };
 

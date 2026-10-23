@@ -4,10 +4,10 @@
 
 /* Topbar */
 .topbar {
-  background-color: #210410;
+  background-color: #071E12;
   color: #D4CBBE;
   font-size: 0.8125rem;
-  border-bottom: 1px solid rgba(199, 164, 106, 0.25);
+  border-bottom: 1px solid rgba(212, 116, 44, 0.25);
   display: block;
 }
 
@@ -304,7 +304,7 @@
    PAGE HERO BANNER (Inner Pages)
    ========================================================================== */
 .page-hero-banner {
-  background: linear-gradient(135deg, #440C22 0%, #641333 60%, #520F2B 100%);
+  background: linear-gradient(135deg, #071E12 0%, #0E3320 60%, #15472E 100%);
   color: var(--color-white);
   padding: 4.5rem 0 4rem 0;
   position: relative;
@@ -355,7 +355,7 @@
   min-height: 85vh;
   display: flex;
   align-items: center;
-  background-color: #1A0810;
+  background-color: #071E12;
   overflow: hidden;
   padding: 5rem 0;
 }
@@ -792,7 +792,7 @@
 }
 
 .final-cta-box {
-  background: linear-gradient(135deg, #440C22 0%, #641333 55%, #7B183F 100%);
+  background: linear-gradient(135deg, #071E12 0%, #0E3320 55%, #184D33 100%);
   border-radius: var(--radius-lg);
   padding: 4rem 3.5rem;
   color: var(--color-white);
@@ -801,7 +801,7 @@
   justify-content: space-between;
   gap: 2.5rem;
   box-shadow: var(--shadow-lg);
-  border: 1px solid rgba(199, 164, 106, 0.35);
+  border: 1px solid rgba(212, 116, 44, 0.35);
 }
 
 .cta-subtag {
@@ -1810,7 +1810,7 @@
   background-color: var(--color-white);
   border-color: var(--color-primary);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(100, 19, 51, 0.1);
+  box-shadow: 0 0 0 3px rgba(14, 51, 32, 0.12);
 }
 
 .form-input.has-error, .form-textarea.has-error {
@@ -2061,13 +2061,13 @@
    FOOTER
    ========================================================================== */
 .site-footer {
-  background-color: #17050C;
+  background-color: #081C12;
   color: #D6CDC1;
   border-top: 3px solid var(--color-accent);
 }
 
 .footer-notice-bar {
-  background-color: #260A16;
+  background-color: #0C281B;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding: 1rem 0;
 }
@@ -2221,7 +2221,7 @@
 }
 
 .footer-bottom {
-  background-color: #0F0307;
+  background-color: #04120A;
   padding: 1.5rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -2297,7 +2297,7 @@
   background-color: var(--color-primary);
   color: var(--color-white);
   border: 1.5px solid var(--color-accent);
-  box-shadow: 0 4px 16px rgba(100, 19, 51, 0.35);
+  box-shadow: 0 4px 16px rgba(14, 51, 32, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,37 +1,37 @@
 /* ==========================================================================
    TOP HILL TEXTILE - CORPORATE DESIGN SYSTEM
-   Palette: Primary (#641333 Deep Burgundy), Secondary (#FFFFFF), 
-            Accent (#C7A46A Warm Gold), Soft Beige (#F5F0EA), Charcoal (#292929)
+   Palette: Primary (#0E3320 Deep Emerald Forest), Secondary (#FFFFFF), 
+            Accent (#D4742C Warm Amber Gold), Soft Mint Beige (#F4F7F5), Deep Forest (#0B2416)
    ========================================================================== */
 
 :root {
   /* Brand Color Palette */
-  --color-primary: #641333;
-  --color-primary-dark: #4d0e27;
-  --color-primary-hover: #7b183f;
-  --color-primary-subtle: #f9eff3;
-  --color-primary-border: #e9ccd8;
+  --color-primary: #0E3320;
+  --color-primary-dark: #071E12;
+  --color-primary-hover: #15472E;
+  --color-primary-subtle: #F0F6F2;
+  --color-primary-border: #C8DDD0;
 
-  --color-accent: #C7A46A;
-  --color-accent-dark: #a98449;
-  --color-accent-hover: #d5b582;
-  --color-accent-subtle: #fbf7ee;
-  --color-accent-border: #ecdcbf;
+  --color-accent: #D4742C;
+  --color-accent-dark: #B85C19;
+  --color-accent-hover: #E6853C;
+  --color-accent-subtle: #FDF6EE;
+  --color-accent-border: #F3DCBF;
 
   --color-white: #FFFFFF;
   --color-bg-base: #FFFFFF;
-  --color-bg-beige: #F5F0EA;
-  --color-bg-warm: #ECE4D8;
-  --color-bg-dark: #1E1E1E;
+  --color-bg-beige: #F4F7F5;
+  --color-bg-warm: #EAF1EC;
+  --color-bg-dark: #081C12;
 
-  --color-text-heading: #1B1B1B;
-  --color-text-main: #292929;
-  --color-text-muted: #5E5E5E;
-  --color-text-subtle: #7F7F7F;
+  --color-text-heading: #0B2416;
+  --color-text-main: #1C3325;
+  --color-text-muted: #4B6354;
+  --color-text-subtle: #6D8275;
 
-  --color-border: #E8E2D9;
-  --color-border-subtle: #F0ECE4;
-  --color-border-dark: #D4CBBE;
+  --color-border: #DDE8E1;
+  --color-border-subtle: #EDF3EF;
+  --color-border-dark: #C2D5C9;
 
   /* Typography */
   --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -44,11 +44,11 @@
   --topbar-height: 38px;
 
   /* Elevation */
-  --shadow-xs: 0 1px 2px rgba(41, 41, 41, 0.04);
-  --shadow-sm: 0 2px 6px rgba(41, 41, 41, 0.05);
-  --shadow-md: 0 6px 18px rgba(41, 41, 41, 0.07);
-  --shadow-lg: 0 12px 36px rgba(41, 41, 41, 0.09);
-  --shadow-hover: 0 16px 40px rgba(100, 19, 51, 0.12);
+  --shadow-xs: 0 1px 2px rgba(11, 36, 22, 0.04);
+  --shadow-sm: 0 2px 6px rgba(11, 36, 22, 0.05);
+  --shadow-md: 0 6px 18px rgba(11, 36, 22, 0.07);
+  --shadow-lg: 0 12px 36px rgba(11, 36, 22, 0.09);
+  --shadow-hover: 0 16px 40px rgba(14, 51, 32, 0.14);
 
   /* Transitions */
   --transition-fast: 0.18s ease;
@@ -243,14 +243,14 @@ button, input, textarea, select {
   background-color: var(--color-primary);
   color: var(--color-white);
   border-color: var(--color-primary);
-  box-shadow: 0 4px 12px rgba(100, 19, 51, 0.2);
+  box-shadow: 0 4px 12px rgba(14, 51, 32, 0.22);
 }
 
 .btn-primary:hover {
   background-color: var(--color-primary-hover);
   border-color: var(--color-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(100, 19, 51, 0.3);
+  box-shadow: 0 6px 18px rgba(14, 51, 32, 0.32);
 }
 
 .btn-secondary {
@@ -394,12 +394,12 @@ button, input, textarea, select {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F5F0EA;
+  background: var(--color-bg-beige);
 }
 ::-webkit-scrollbar-thumb {
-  background: #C7A46A;
+  background: var(--color-accent);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #641333;
+  background: var(--color-primary);
 }

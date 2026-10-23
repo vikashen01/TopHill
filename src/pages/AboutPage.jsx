@@ -253,8 +253,8 @@ export default function AboutPage({ navigateTo }) {
               <div className="info-row">
                 <div className="info-cell-label">Official Corporate Email:</div>
                 <div className="info-cell-value">
-                  <a href="mailto:tophilltextile26@gmail.com" style={{ fontWeight: 600, color: 'var(--color-primary)', textDecoration: 'underline' }}>
-                    tophilltextile26@gmail.com
+                  <a href="mailto:tophilltextile25@gmail.com" style={{ fontWeight: 600, color: 'var(--color-primary)', textDecoration: 'underline' }}>
+                    tophilltextile25@gmail.com
                   </a>
                   <span className="field-note">Mon – Sat (10:00 AM – 6:30 PM IST)</span>
                 </div>
@@ -263,8 +263,8 @@ export default function AboutPage({ navigateTo }) {
               <div className="info-row">
                 <div className="info-cell-label">Official Contact Number:</div>
                 <div className="info-cell-value">
-                  <a href="tel:+919899763193" style={{ fontWeight: 600, color: 'var(--color-primary)', textDecoration: 'underline' }}>
-                    +91 9899763193
+                  <a href="tel:+917983597645" style={{ fontWeight: 600, color: 'var(--color-primary)', textDecoration: 'underline' }}>
+                    +91 7983597645
                   </a>
                   <span className="field-note">Direct commercial coordination phone line</span>
                 </div>
