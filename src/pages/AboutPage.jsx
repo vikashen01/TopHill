@@ -263,8 +263,8 @@ export default function AboutPage({ navigateTo }) {
               <div className="info-row">
                 <div className="info-cell-label">Official Contact Number:</div>
                 <div className="info-cell-value">
-                  <a href="tel:+917983597645" style={{ fontWeight: 600, color: 'var(--color-primary)', textDecoration: 'underline' }}>
-                    +91 7983597645
+                  <a href="tel:+919899763193" style={{ fontWeight: 600, color: 'var(--color-primary)', textDecoration: 'underline' }}>
+                    +91 98997 63193
                   </a>
                   <span className="field-note">Direct commercial coordination phone line</span>
                 </div>

@@ -71,12 +71,12 @@ export default function Header({ currentRoute, navigateTo }) {
             </a>
             <span className="topbar-divider">|</span>
             <a 
-              href="tel:+917983597645" 
+              href="tel:+919899763193" 
               className="topbar-item topbar-link"
               title="Official Contact Number"
             >
               <Phone size={13} />
-              <span>+91 7983597645</span>
+              <span>+91 98997 63193</span>
             </a>
             <span className="topbar-divider">|</span>
             <div className="topbar-socials">
@@ -212,7 +212,7 @@ export default function Header({ currentRoute, navigateTo }) {
               </p>
               <p className="mobile-info-text"><strong>GSTIN:</strong> 09AAMCT5200E1ZH</p>
               <p className="mobile-info-text"><strong>Email:</strong> tophilltextile26@gmail.com</p>
-              <p className="mobile-info-text"><strong>Phone:</strong> +91 7983597645</p>
+              <p className="mobile-info-text"><strong>Phone:</strong> +91 98997 63193</p>
             </div>
           </div>
         </div>
