@@ -2,11 +2,11 @@ import { createClient } from '@supabase/supabase-js';
 
 // Supabase Project Credentials
 const SUPABASE_URL = 
-  import.meta.env.VITE_SUPABASE_URL || 
+  import.meta.env?.VITE_SUPABASE_URL || 
   'https://ibybgkprblqpvbweegnu.supabase.co';
 
 const SUPABASE_ANON_KEY = 
-  import.meta.env.VITE_SUPABASE_ANON_KEY || 
+  import.meta.env?.VITE_SUPABASE_ANON_KEY || 
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlieWJna3ByYmxxcHZid2VlZ251Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI1MTIyOTAsImV4cCI6MjEwODA4ODI5MH0.eM7_bmwr9gJqujlw1DrfVJTSValHF2ErbYe72st74A8';
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
@@ -42,18 +42,17 @@ export async function insertInquiry(inquiryData) {
       admin_notes: inquiryData.adminNotes || '',
     };
 
-    const { data, error } = await supabase
+    // Write-only insert into Supabase inquiries table
+    const { error } = await supabase
       .from('inquiries')
-      .insert([payload])
-      .select()
-      .single();
+      .insert([payload]);
 
     if (error) {
       console.error('Supabase insert inquiry error:', error);
       return { success: false, error: error.message, data: null };
     }
 
-    return { success: true, data, error: null };
+    return { success: true, data: { ...payload }, error: null };
   } catch (err) {
     console.error('Unexpected error inserting inquiry:', err);
     return { success: false, error: err.message || 'Unknown network error', data: null };

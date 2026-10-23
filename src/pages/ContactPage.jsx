@@ -9,20 +9,12 @@ import {
   CheckCircle2, 
   MessageCircle, 
   ShieldCheck, 
-  Eye, 
-  Trash2, 
   RefreshCw,
   Sparkles,
-  Database,
   ArrowDown
 } from 'lucide-react';
 import { InstagramIcon as Instagram, FacebookIcon as Facebook } from '../components/SocialIcons';
-import { 
-  insertInquiry, 
-  getInquiries, 
-  checkSupabaseHealth, 
-  PROJECT_DETAILS 
-} from '../supabaseClient';
+import { insertInquiry } from '../supabaseClient';
 
 export default function ContactPage({ initialInquiryType = 'General Inquiry', initialPlan = null }) {
   const formCardRef = useRef(null);
@@ -42,9 +34,6 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedInquiry, setSubmittedInquiry] = useState(null);
-  const [storedInquiries, setStoredInquiries] = useState([]);
-  const [showInquiryLog, setShowInquiryLog] = useState(false);
-  const [cloudStatus, setCloudStatus] = useState({ connected: true, latency: null });
 
   // Smooth slide directly down to the form
   const scrollToForm = () => {
@@ -77,41 +66,7 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
     return () => clearTimeout(t);
   }, [initialInquiryType, initialPlan]);
 
-  // Load inquiries from Supabase with fallback to localStorage
-  const loadInquiries = async () => {
-    // Check health
-    const health = await checkSupabaseHealth();
-    setCloudStatus({ connected: health.healthy, latency: health.latency });
 
-    const res = await getInquiries({ limit: 20 });
-    if (res.success && res.data.length > 0) {
-      const formatted = res.data.map(item => ({
-        id: item.inquiry_ref || item.id,
-        fullName: item.full_name,
-        companyName: item.company_name || 'Individual',
-        phoneNumber: item.phone_number,
-        emailAddress: item.email_address,
-        natureOfInquiry: item.nature_of_inquiry,
-        message: item.message,
-        timestamp: item.created_at ? new Date(item.created_at).toLocaleString('en-IN') : 'Recent',
-        synced: true
-      }));
-      setStoredInquiries(formatted);
-    } else {
-      try {
-        const stored = localStorage.getItem('tophill_inquiries_log');
-        if (stored) {
-          setStoredInquiries(JSON.parse(stored));
-        }
-      } catch (e) {
-        console.warn('Storage read error', e);
-      }
-    }
-  };
-
-  useEffect(() => {
-    loadInquiries();
-  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -177,22 +132,15 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
       timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
     };
 
-    // Insert to Supabase Cloud Database
+    // Insert directly into Supabase Cloud Database (Write-Only)
     const res = await insertInquiry(inquiryRecord);
 
-    // Save to local state and local backup
-    const updatedList = [{ ...inquiryRecord, synced: res.success }, ...storedInquiries];
-    try {
-      localStorage.setItem('tophill_inquiries_log', JSON.stringify(updatedList));
-    } catch (err) {
-      console.warn('Storage save error', err);
-    }
-
-    setStoredInquiries(updatedList);
     setSubmittedInquiry({
-      ...inquiryRecord,
-      cloudSynced: res.success,
-      cloudError: res.error
+      id: refId,
+      fullName: inquiryRecord.fullName,
+      emailAddress: inquiryRecord.emailAddress,
+      phoneNumber: inquiryRecord.phoneNumber,
+      success: res.success
     });
     setIsSubmitting(false);
 
@@ -205,11 +153,6 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
       message: '',
       honeypot: ''
     });
-  };
-
-  const handleClearLog = () => {
-    localStorage.removeItem('tophill_inquiries_log');
-    setStoredInquiries([]);
   };
 
   return (
@@ -436,21 +379,13 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
                     <CheckCircle2 size={24} className="success-icon" />
                     <div>
                       <h4 className="success-title">
-                        {submittedInquiry.cloudSynced 
-                          ? 'Inquiry Recorded to Supabase Cloud Database' 
-                          : 'Inquiry Recorded'}
+                        Business Inquiry Received Successfully
                       </h4>
                       <p className="success-text">
-                        Thank you, <strong>{submittedInquiry.fullName}</strong>. Your inquiry has been securely stored with Reference ID: <strong>{submittedInquiry.id}</strong>.
+                        Thank you, <strong>{submittedInquiry.fullName}</strong>. Your inquiry has been registered with Reference ID: <strong>{submittedInquiry.id}</strong>.
                       </p>
-                      {submittedInquiry.cloudSynced && (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', color: '#166534', margin: '6px 0' }}>
-                          <Database size={14} />
-                          <span>Synced with Supabase Backend ({PROJECT_DETAILS.region})</span>
-                        </div>
-                      )}
                       <p className="success-sub">
-                        Our coordination desk at Sector 63, Noida will review your requirements and connect with you via email ({submittedInquiry.emailAddress}) or phone ({submittedInquiry.phoneNumber}).
+                        Our coordination desk at Sector 63, Noida will review your requirements and connect with you via email ({submittedInquiry.emailAddress}) or phone ({submittedInquiry.phoneNumber}) within 24 business hours.
                       </p>
                       <button 
                         type="button" 
@@ -622,63 +557,7 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
                   </div>
                 </form>
 
-                {/* Stored Inquiries Viewer */}
-                <div className="inquiry-storage-bar">
-                  <div className="storage-status">
-                    <Database size={15} style={{ color: cloudStatus.connected ? '#10b981' : '#f59e0b' }} />
-                    <span>
-                      Supabase Cloud: <strong>{storedInquiries.length} Inquiries</strong>
-                      {cloudStatus.latency && (
-                        <span style={{ fontSize: '0.75rem', color: '#64748b', marginLeft: '6px' }}>
-                          ({cloudStatus.latency}ms)
-                        </span>
-                      )}
-                    </span>
-                  </div>
-                  {storedInquiries.length > 0 && (
-                    <button 
-                      type="button" 
-                      className="btn-view-log"
-                      onClick={() => setShowInquiryLog(!showInquiryLog)}
-                    >
-                      <Eye size={13} />
-                      <span>{showInquiryLog ? 'Hide Inquiries' : 'View Recorded Submissions'}</span>
-                    </button>
-                  )}
-                </div>
 
-                {/* Inspection Drawer */}
-                {showInquiryLog && storedInquiries.length > 0 && (
-                  <div className="inquiries-inspection-box">
-                    <div className="inspection-header">
-                      <strong>Cloud &amp; Local Inquiries Log</strong>
-                      <button 
-                        type="button" 
-                        className="btn-clear-log"
-                        onClick={handleClearLog}
-                        title="Clear local log"
-                      >
-                        <Trash2 size={13} /> Clear Cache
-                      </button>
-                    </div>
-                    <div className="inspection-list">
-                      {storedInquiries.map((inq) => (
-                        <div key={inq.id} className="inspection-entry">
-                          <div className="entry-head">
-                            <span className="entry-id">{inq.id}</span>
-                            <span className="entry-time">{inq.timestamp}</span>
-                          </div>
-                          <div className="entry-body">
-                            <p><strong>Name:</strong> {inq.fullName} ({inq.companyName})</p>
-                            <p><strong>Contact:</strong> {inq.emailAddress} | {inq.phoneNumber}</p>
-                            <p><strong>Nature:</strong> {inq.natureOfInquiry}</p>
-                            <p><strong>Message:</strong> {inq.message}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           </div>
