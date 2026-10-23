@@ -57,11 +57,11 @@ export default function Footer({ navigateTo }) {
                     <span>@tophill_textile</span>
                   </a>
                   <a 
-                    href="https://www.facebook.com/TopHill" 
+                    href="https://www.facebook.com/profile.php?id=61595064245118" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="social-btn facebook-btn"
-                    title="TopHill on Facebook: Top Hill"
+                    title="TopHill Textile on Facebook"
                   >
                     <Facebook size={16} />
                     <span>Top Hill</span>
@@ -77,17 +77,6 @@ export default function Footer({ navigateTo }) {
                 <li>
                   <button type="button" className="footer-link-btn" onClick={() => handleNav('home')}>
                     <ArrowRight size={14} /> Home
-                  </button>
-                </li>
-                <li>
-                  <button type="button" className="footer-link-btn" onClick={() => {
-                    handleNav('home');
-                    setTimeout(() => {
-                      const el = document.getElementById('our-products');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }, 120);
-                  }}>
-                    <ArrowRight size={14} /> Our Products
                   </button>
                 </li>
                 <li>
@@ -168,8 +157,8 @@ export default function Footer({ navigateTo }) {
                   <Mail size={18} className="footer-icon" />
                   <div>
                     <span className="contact-label">Official Email</span>
-                    <a href="mailto:tophilltextile25@gmail.com" className="contact-value" style={{ textDecoration: 'underline' }}>
-                      tophilltextile25@gmail.com
+                    <a href="mailto:tophilltextile26@gmail.com" className="contact-value" style={{ textDecoration: 'underline' }}>
+                      tophilltextile26@gmail.com
                     </a>
                   </div>
                 </li>

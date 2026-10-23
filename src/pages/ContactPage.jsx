@@ -283,11 +283,11 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
                   <div>
                     <span className="contact-item-label">Official Corporate Email</span>
                     <a 
-                      href="mailto:tophilltextile25@gmail.com" 
+                      href="mailto:tophilltextile26@gmail.com" 
                       className="contact-item-primary" 
                       style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}
                     >
-                      tophilltextile25@gmail.com
+                      tophilltextile26@gmail.com
                     </a>
                     <span className="contact-item-sub">Mon – Sat (10:00 AM – 6:30 PM IST)</span>
                   </div>
@@ -363,7 +363,7 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
                     <span>Instagram: @tophill_textile</span>
                   </a>
                   <a 
-                    href="https://www.facebook.com/TopHill" 
+                    href="https://www.facebook.com/profile.php?id=61595064245118" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="social-pill facebook-pill"

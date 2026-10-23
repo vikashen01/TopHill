@@ -81,18 +81,45 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 52px;
-  margin-bottom: 0.75rem;
-  background: var(--color-bg-beige);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 4px;
+  height: 60px;
+  margin-bottom: 0.85rem;
+  background: #ffffff;
+  border: 1.5px solid rgba(14, 51, 32, 0.08);
+  border-radius: 10px;
+  padding: 6px 12px;
   transition: all var(--transition-smooth);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.brand-logo-wrap.brand-logo-dark {
+  background: #0b0f13;
+  border-color: #242c35;
+}
+
+.brand-logo-img {
+  max-width: 100%;
+  max-height: 44px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform var(--transition-smooth);
+  display: block;
 }
 
 .brand-card-item:hover .brand-logo-wrap {
-  background: var(--color-primary-subtle);
+  background: #ffffff;
   border-color: var(--color-accent);
+  box-shadow: 0 4px 14px rgba(212, 116, 44, 0.16);
+  transform: translateY(-2px);
+}
+
+.brand-card-item:hover .brand-logo-wrap.brand-logo-dark {
+  background: #0b0f13;
+  border-color: var(--color-accent);
+}
+
+.brand-card-item:hover .brand-logo-img {
   transform: scale(1.05);
 }
 
@@ -805,7 +832,61 @@
   font-size: 0.92rem;
   color: var(--color-text-muted);
   line-height: 1.55;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.85rem;
+}
+
+.product-brands-strip {
+  margin: 0 0 1.15rem;
+  padding: 0.6rem 0.85rem;
+  background: var(--color-bg-beige);
+  border: 1px solid rgba(14, 51, 32, 0.08);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.product-brands-strip-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.product-brands-strip-logos {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.product-mini-brand-badge {
+  background: #ffffff;
+  border: 1px solid rgba(14, 51, 32, 0.12);
+  border-radius: 6px;
+  padding: 3px 7px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.product-mini-brand-badge.mini-dark {
+  background: #0b0f13;
+  border-color: #242c35;
+}
+
+.product-mini-brand-badge img {
+  max-height: 18px;
+  max-width: 58px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .product-specs-block {

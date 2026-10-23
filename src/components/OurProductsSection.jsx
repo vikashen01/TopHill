@@ -24,6 +24,11 @@ export default function OurProductsSection({ onInquire }) {
       badge: 'High-Demand Apparel',
       tagline: 'Contemporary & Ethnic Ready-To-Wear Manufacturing',
       desc: "Comprehensive production coordination for women's apparel catering to top brands like Roadster, DressBerry, and CORSICA. From tech-pack development to final Myntra QC pass.",
+      brands: [
+        { name: 'Roadster', logo: '/images/brands/brand-roadster.png' },
+        { name: 'DressBerry', logo: '/images/brands/brand-dressberry.png' },
+        { name: 'CORSICA', logo: '/images/brands/brand-corsica.png' }
+      ],
       specs: [
         'Kurtis, Anarkalis & Ethnic Ensembles',
         'Western Dresses, Tops & Tunics',
@@ -63,7 +68,12 @@ export default function OurProductsSection({ onInquire }) {
       category: 'denim',
       badge: 'Rugged & Stretch Weaves',
       tagline: 'Heavy-Duty & Comfort Stretch Denim Solutions',
-      desc: 'Authentic indigo rope-dyed, sulphur black, and stretch denim fabrics alongside full bottom-wear jeans production tailored for youth labels like Roadster & Baesd.',
+      desc: 'Authentic indigo rope-dyed, sulphur black, and stretch denim fabrics alongside full bottom-wear jeans production tailored for youth labels like Roadster, Mast & Harbour, and Here & NOW.',
+      brands: [
+        { name: 'Roadster', logo: '/images/brands/brand-roadster.png' },
+        { name: 'Mast & Harbour', logo: '/images/brands/brand-mastharbour.png' },
+        { name: 'Here & NOW', logo: '/images/brands/brand-herenow.png', isDark: true }
+      ],
       specs: [
         'Fabric Weights: 8.5 oz to 14.5 oz Heavyweight',
         'Cotton-Spandex Stretch & Ring-Spun Indigos',
@@ -201,6 +211,23 @@ export default function OurProductsSection({ onInquire }) {
 
                 <div className="product-card-body">
                   <p className="product-description-text">{p.desc}</p>
+
+                  {p.brands && (
+                    <div className="product-brands-strip">
+                      <span className="product-brands-strip-title">Associated Labels:</span>
+                      <div className="product-brands-strip-logos">
+                        {p.brands.map((b, bIdx) => (
+                          <div 
+                            key={bIdx} 
+                            className={`product-mini-brand-badge ${b.isDark ? 'mini-dark' : ''}`} 
+                            title={b.name}
+                          >
+                            <img src={b.logo} alt={b.name} />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   <div className="product-specs-block">
                     <span className="product-specs-heading">Key Specifications:</span>

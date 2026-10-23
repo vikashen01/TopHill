@@ -65,7 +65,7 @@ export default function PrivacyPolicyPage({ navigateTo }) {
                 </div>
                 <div className="info-row">
                   <div className="info-cell-label">Official Email:</div>
-                  <div className="info-cell-value">tophilltextile25@gmail.com</div>
+                  <div className="info-cell-value">tophilltextile26@gmail.com</div>
                 </div>
                 <div className="info-row">
                   <div className="info-cell-label">Contact Phone:</div>

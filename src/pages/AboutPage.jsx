@@ -253,8 +253,8 @@ export default function AboutPage({ navigateTo }) {
               <div className="info-row">
                 <div className="info-cell-label">Official Corporate Email:</div>
                 <div className="info-cell-value">
-                  <a href="mailto:tophilltextile25@gmail.com" style={{ fontWeight: 600, color: 'var(--color-primary)', textDecoration: 'underline' }}>
-                    tophilltextile25@gmail.com
+                  <a href="mailto:tophilltextile26@gmail.com" style={{ fontWeight: 600, color: 'var(--color-primary)', textDecoration: 'underline' }}>
+                    tophilltextile26@gmail.com
                   </a>
                   <span className="field-note">Mon – Sat (10:00 AM – 6:30 PM IST)</span>
                 </div>
@@ -282,7 +282,7 @@ export default function AboutPage({ navigateTo }) {
                     <Instagram size={17} /> Instagram: @tophill_textile
                   </a>
                   <a 
-                    href="https://www.facebook.com/TopHill" 
+                    href="https://www.facebook.com/profile.php?id=61595064245118" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     style={{ color: '#1877F2', display: 'inline-flex', alignItems: 'center', gap: '5px', fontWeight: 600 }}
