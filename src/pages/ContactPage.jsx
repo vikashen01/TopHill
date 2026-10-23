@@ -336,14 +336,14 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
                   Connect instantly with our coordination team on WhatsApp for quick inquiries regarding Myntra plans and garment manufacturing.
                 </p>
                 <a 
-                  href="https://wa.me/919899763193?text=Hello%20TopHill%20Textile,%20I%20would%20like%20to%20inquire%20about%20your%20services%20and%20Myntra%20plans."
+                  href="https://wa.me/917983597645?text=Hello%20TopHill%20Textile,%20I%20would%20like%20to%20inquire%20about%20your%20services%20and%20Myntra%20plans."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-whatsapp"
                   style={{ marginTop: '0.75rem', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
                 >
                   <MessageCircle size={18} />
-                  <span>Chat on WhatsApp: +91 9899763193</span>
+                  <span>Chat on WhatsApp: +91 7983597645</span>
                 </a>
               </div>
 
@@ -524,7 +524,7 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
                         id="phoneNumber"
                         name="phoneNumber"
                         className={`form-input ${errors.phoneNumber ? 'has-error' : ''}`}
-                        placeholder="e.g. +91 98997 63193"
+                        placeholder="e.g. +91 79835 97645"
                         value={formData.phoneNumber}
                         onChange={handleChange}
                         required
