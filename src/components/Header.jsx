@@ -208,7 +208,7 @@ export default function Header({ currentRoute, navigateTo }) {
             <div className="mobile-menu-info">
               <p className="mobile-info-heading">Corporate Office</p>
               <p className="mobile-info-text">
-                G-137, 2nd Floor, Sector 63, Noida, Uttar Pradesh-201301
+                Sector 63, Noida, Uttar Pradesh - 201301
               </p>
               <p className="mobile-info-text"><strong>GSTIN:</strong> 09AAMCT5200E1ZH</p>
               <p className="mobile-info-text"><strong>Email:</strong> tophilltextile26@gmail.com</p>

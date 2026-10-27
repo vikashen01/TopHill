@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage({ navigateTo }) {
 
             <h2>1. Introduction</h2>
             <p>
-              TopHill Textile Pvt. Ltd. ("TopHill Textile", "we", "us", or "our"), having its registered corporate office at G-137, 2nd Floor, Sector 63, Noida, Uttar Pradesh-201301, respects the privacy of individuals and corporate partners who visit our corporate website. This Privacy Policy outlines our practices concerning the collection, use, and protection of information submitted through our online inquiry forms.
+              TopHill Textile Pvt. Ltd. ("TopHill Textile", "we", "us", or "our"), having its registered corporate office at Sector 63, Noida, Uttar Pradesh - 201301, respects the privacy of individuals and corporate partners who visit our corporate website. This Privacy Policy outlines our practices concerning the collection, use, and protection of information submitted through our online inquiry forms.
             </p>
 
             <h2>2. Information We Collect</h2>
@@ -57,7 +57,7 @@ export default function PrivacyPolicyPage({ navigateTo }) {
                 </div>
                 <div className="info-row">
                   <div className="info-cell-label">Registered Office:</div>
-                  <div className="info-cell-value">G-137, 2nd Floor, Sector 63, Noida, Uttar Pradesh-201301</div>
+                  <div className="info-cell-value">Sector 63, Noida, Uttar Pradesh - 201301</div>
                 </div>
                 <div className="info-row">
                   <div className="info-cell-label">GSTIN:</div>

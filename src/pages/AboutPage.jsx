@@ -236,7 +236,7 @@ export default function AboutPage({ navigateTo }) {
                 <div className="info-cell-label">Registered Office Address:</div>
                 <div className="info-cell-value">
                   <strong style={{ color: 'var(--color-primary)' }}>
-                    G-137, 2nd Floor, Sector 63, Noida, Uttar Pradesh - 201301
+                    Sector 63, Noida, Uttar Pradesh - 201301
                   </strong>
                   <span className="field-note">Industrial &amp; Corporate Hub, Noida, Gautam Buddha Nagar</span>
                 </div>

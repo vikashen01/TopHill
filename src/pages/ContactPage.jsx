@@ -212,7 +212,7 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
                   <div>
                     <span className="contact-item-label">Registered Office Address</span>
                     <p className="contact-item-primary">
-                      G-137, 2nd Floor, Sector 63, Noida, Uttar Pradesh - 201301
+                      Sector 63, Noida, Uttar Pradesh - 201301
                     </p>
                     <span className="contact-item-sub">Industrial Area Sector 63, Noida</span>
                   </div>

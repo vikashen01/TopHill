@@ -25,7 +25,7 @@ export default function TermsPage({ navigateTo }) {
 
             <h2>1. Acceptance of Terms</h2>
             <p>
-              By accessing and using this corporate website, you agree to comply with and be bound by these Terms and Conditions. This website is owned and operated by TopHill Textile Pvt. Ltd., located at G-137, 2nd Floor, Sector 63, Noida, Uttar Pradesh-201301.
+              By accessing and using this corporate website, you agree to comply with and be bound by these Terms and Conditions. This website is owned and operated by TopHill Textile Pvt. Ltd., located at Sector 63, Noida, Uttar Pradesh - 201301.
             </p>
 
             <h2>2. Informational Purpose &amp; Growth Plans Scope</h2>
@@ -55,7 +55,7 @@ export default function TermsPage({ navigateTo }) {
                 </div>
                 <div className="info-row">
                   <div className="info-cell-label">Registered Office:</div>
-                  <div className="info-cell-value">G-137, 2nd Floor, Sector 63, Noida, Uttar Pradesh-201301</div>
+                  <div className="info-cell-value">Sector 63, Noida, Uttar Pradesh - 201301</div>
                 </div>
                 <div className="info-row">
                   <div className="info-cell-label">GSTIN:</div>

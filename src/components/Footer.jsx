@@ -148,7 +148,7 @@ export default function Footer({ navigateTo }) {
                   <div>
                     <span className="contact-label">Office Address</span>
                     <p className="contact-value">
-                      G-137, 2nd Floor, Sector 63,<br />
+                      Sector 63,<br />
                       Noida, Uttar Pradesh - 201301
                     </p>
                   </div>
