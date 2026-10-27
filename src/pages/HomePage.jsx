@@ -368,9 +368,9 @@ export default function HomePage({ navigateTo, onSelectPlan, setInquiryType }) {
               type="button" 
               className="btn btn-outline-burgundy btn-sm"
               style={{ marginTop: '1.25rem' }}
-              onClick={() => handleNav('process')}
+              onClick={() => handleNav('products')}
             >
-              <span>View Full 6-Step Process &amp; Timelines</span>
+              <span>Explore Our Products &amp; Categories</span>
               <ArrowRight size={15} />
             </button>
           </div>

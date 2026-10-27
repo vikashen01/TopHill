@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import PlansPage from './pages/PlansPage';
+import ProductsPage from './pages/ProductsPage';
 import ProcessPage from './pages/ProcessPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
@@ -27,6 +28,7 @@ export default function App() {
         'about', 
         'services', 
         'plans', 
+        'products',
         'process', 
         'contact', 
         'privacy-policy', 
@@ -52,7 +54,8 @@ export default function App() {
       'about': 'About Us | TopHill Textile Pvt. Ltd.',
       'services': 'Our Services | TopHill Textile',
       'plans': 'Myntra Business Plans | TopHill Textile',
-      'process': 'Our Process | TopHill Textile',
+      'products': "Our Products | Western Wear | TopHill Textile",
+      'process': "Our Products | Western Wear | TopHill Textile",
       'contact': 'Contact Us | TopHill Textile Pvt. Ltd.',
       'privacy-policy': 'Privacy Policy | TopHill Textile',
       'terms-conditions': 'Terms & Conditions | TopHill Textile'
@@ -98,8 +101,9 @@ export default function App() {
         return <ServicesPage navigateTo={navigateTo} setInquiryType={setSelectedInquiryType} />;
       case 'plans':
         return <PlansPage navigateTo={navigateTo} onSelectPlan={handleSelectPlan} />;
+      case 'products':
       case 'process':
-        return <ProcessPage navigateTo={navigateTo} />;
+        return <ProductsPage navigateTo={navigateTo} onSelectPlan={handleSelectPlan} setInquiryType={setSelectedInquiryType} />;
       case 'contact':
         return <ContactPage initialInquiryType={selectedInquiryType} initialPlan={selectedPlan} />;
       case 'privacy-policy':

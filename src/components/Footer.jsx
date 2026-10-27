@@ -95,8 +95,8 @@ export default function Footer({ navigateTo }) {
                   </button>
                 </li>
                 <li>
-                  <button type="button" className="footer-link-btn" onClick={() => handleNav('process')}>
-                    <ArrowRight size={14} /> Our Process
+                  <button type="button" className="footer-link-btn" onClick={() => handleNav('products')}>
+                    <ArrowRight size={14} /> Our Products
                   </button>
                 </li>
                 <li>

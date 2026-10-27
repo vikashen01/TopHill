@@ -34,7 +34,7 @@ export default function Header({ currentRoute, navigateTo }) {
     { id: 'about', label: 'About Us' },
     { id: 'services', label: 'Our Services' },
     { id: 'plans', label: 'Business Plans' },
-    { id: 'process', label: 'Our Process' },
+    { id: 'products', label: 'Our Products' },
     { id: 'contact', label: 'Contact Us' }
   ];
 
