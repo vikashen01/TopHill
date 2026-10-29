@@ -244,11 +244,11 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
                   <div>
                     <span className="contact-item-label">Official Contact Phone</span>
                     <a 
-                      href="tel:+919899763193" 
+                      href="tel:+919315331798" 
                       className="contact-item-primary" 
                       style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}
                     >
-                      +91 98997 63193
+                      +91 93153 31798
                     </a>
                     <span className="contact-item-sub">Direct telephone liaison desk</span>
                   </div>
@@ -279,14 +279,14 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
                   Connect instantly with our coordination team on WhatsApp for quick inquiries regarding Myntra plans and garment manufacturing.
                 </p>
                 <a 
-                  href="https://wa.me/919899763193?text=Hello%20TopHill%20Textile,%20I%20would%20like%20to%20inquire%20about%20your%20services%20and%20Myntra%20plans."
+                  href="https://wa.me/919315331798?text=Hello%20TopHill%20Textile,%20I%20would%20like%20to%20inquire%20about%20your%20services%20and%20Myntra%20plans."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-whatsapp"
                   style={{ marginTop: '0.75rem', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
                 >
                   <MessageCircle size={18} />
-                  <span>Chat on WhatsApp: +91 98997 63193</span>
+                  <span>Chat on WhatsApp: +91 93153 31798</span>
                 </a>
               </div>
 
@@ -459,7 +459,7 @@ export default function ContactPage({ initialInquiryType = 'General Inquiry', in
                         id="phoneNumber"
                         name="phoneNumber"
                         className={`form-input ${errors.phoneNumber ? 'has-error' : ''}`}
-                        placeholder="e.g. +91 98997 63193"
+                        placeholder="e.g. +91 93153 31798"
                         value={formData.phoneNumber}
                         onChange={handleChange}
                         required

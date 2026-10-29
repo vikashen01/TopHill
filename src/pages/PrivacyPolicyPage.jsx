@@ -69,7 +69,7 @@ export default function PrivacyPolicyPage({ navigateTo }) {
                 </div>
                 <div className="info-row">
                   <div className="info-cell-label">Contact Phone:</div>
-                  <div className="info-cell-value">+91 98997 63193</div>
+                  <div className="info-cell-value">+91 93153 31798</div>
                 </div>
               </div>
             </div>

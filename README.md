@@ -35,7 +35,7 @@ TopHill Textile Pvt. Ltd. is a structured, reliable partner coordinating:
 - **Registered Address:** Sector 63, Noida, Uttar Pradesh - 201301
 - **GSTIN:** 09AAMCT5200E1ZH
 - **Official Email:** tophilltextile26@gmail.com
-- **Official Phone:** +91 98997 63193 (Arti, Business Head)
+- **Official Phone:** +91 93153 31798
 - **Instagram:** [@tophill_textile](https://www.instagram.com/tophill_textile/)
 - **Facebook:** [Top Hill](https://www.facebook.com/profile.php?id=61595064245118)
 

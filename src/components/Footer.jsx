@@ -166,8 +166,8 @@ export default function Footer({ navigateTo }) {
                   <Phone size={18} className="footer-icon" />
                   <div>
                     <span className="contact-label">Contact Phone</span>
-                    <a href="tel:+919899763193" className="contact-value" style={{ textDecoration: 'underline' }}>
-                      +91 98997 63193
+                    <a href="tel:+919315331798" className="contact-value" style={{ textDecoration: 'underline' }}>
+                      +91 93153 31798
                     </a>
                   </div>
                 </li>

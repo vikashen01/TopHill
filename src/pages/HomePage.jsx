@@ -16,6 +16,7 @@ import {
 import TopBrandsShowcase from '../components/TopBrandsShowcase';
 import MyntraPlans from '../components/MyntraPlans';
 import OurProductsSection from '../components/OurProductsSection';
+import HeroCarousel from '../components/HeroCarousel';
 
 export default function HomePage({ navigateTo, onSelectPlan, setInquiryType }) {
   const handleNav = (routeId) => {
@@ -88,61 +89,19 @@ export default function HomePage({ navigateTo, onSelectPlan, setInquiryType }) {
   return (
     <div className="page-home animate-fade-in">
       {/* =========================================================================
-          HERO SECTION
+          HERO CAROUSEL SECTION (Multi-Slide Showcase)
+          Slide 1: Become a Partner with Top Brands on Myntra
+          Slide 2: Western Wear Apparel Products & Subcategories (with photos)
+          Slide 3: Fabric Details & Mill Sourcing (Cotton, Viscose, Poly, Linen, Knits, Denim)
           ========================================================================= */}
-      <section className="hero-section">
-        <div className="hero-backdrop-container">
-          <img 
-            src="/images/hero-banner.jpg" 
-            alt="Modern garment manufacturing studio and apparel production coordination workspace" 
-            className="hero-backdrop-img"
-          />
-          <div className="hero-overlay"></div>
-        </div>
-
-        <div className="site-container hero-container">
-          <div className="hero-content">
-            <div className="hero-badge">
-              <Sparkles size={14} className="gold-icon" />
-              <span>Garment Business Operations &bull; Fashion, Beauty, Lifestyle &amp; More</span>
-            </div>
-
-            {/* Seventh Change: BECOME A PARTNER WITH TOP BRANDS ON MYNTRA (PARTNER in highlighted yellow) */}
-            <h1 className="hero-headline">
-              BECOME A <span className="highlight-yellow">PARTNER</span> WITH TOP BRANDS ON MYNTRA
-            </h1>
-
-            {/* Sixth Change: Comprehensive value proposition */}
-            <p className="hero-subheading">
-              A structured, reliable partner coordinating garment production, catalog preparation, Myntra onboarding to QC pass, and operational execution. We manufacture clothes for top brands of Myntra including <strong>Roadster</strong>, <strong>DressBerry</strong>, <strong>Moda Rapido</strong>, <strong>CORSICA</strong>, <strong>Mast &amp; Harbour</strong>, <strong>Here &amp; NOW</strong>, and <strong>Baesd</strong>.
-            </p>
-
-            <div className="hero-actions">
-              <a 
-                href="#myntra-plans"
-                className="btn btn-accent btn-lg"
-              >
-                <span>View Growth Plans</span>
-                <ArrowRight size={18} />
-              </a>
-
-              <button 
-                type="button" 
-                className="btn btn-secondary btn-lg hero-btn-secondary"
-                onClick={() => handleNav('contact')}
-              >
-                <span>Contact Us</span>
-              </button>
-            </div>
-
-            {/* Quick Transparency Note */}
-            <div className="hero-trust-note">
-              <Info size={14} />
-              <span>Listing assistance is specialized exclusively on Myntra from onboarding to QC pass. Category of clothes manufactured: Fashion, Beauty, Lifestyle &amp; More.</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroCarousel 
+        onNavigate={handleNav}
+        onSelectPlan={onSelectPlan}
+        onInquire={(subject) => {
+          if (setInquiryType) setInquiryType(subject);
+          handleNav('contact');
+        }}
+      />
 
       {/* =========================================================================
           TOP MYNTRA BRANDS SHOWCASE SECTION (Sixth Change)

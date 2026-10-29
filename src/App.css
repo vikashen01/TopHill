@@ -377,7 +377,8 @@
   filter: brightness(0.92);
 }
 
-.hero-overlay {
+.hero-overlay,
+.hero-overlay-emerald {
   position: absolute;
   top: 0;
   left: 0;
@@ -385,9 +386,9 @@
   bottom: 0;
   background: linear-gradient(
     90deg, 
-    rgba(25, 5, 14, 0.94) 0%, 
-    rgba(45, 10, 24, 0.88) 45%, 
-    rgba(30, 20, 25, 0.65) 100%
+    rgba(7, 26, 16, 0.96) 0%, 
+    rgba(14, 51, 32, 0.90) 48%, 
+    rgba(8, 28, 18, 0.72) 100%
   );
 }
 
@@ -2218,3 +2219,654 @@
   transform: translateY(-4px);
   box-shadow: 0 6px 20px rgba(199, 164, 106, 0.4);
 }
+
+/* ==========================================================================
+   HERO CAROUSEL & MULTI-SLIDE STYLES
+   ========================================================================== */
+.hero-carousel-section {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  background-color: #071E12;
+  overflow: hidden;
+}
+
+.hero-slides-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 85vh;
+  display: flex;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.65s ease;
+  display: flex;
+  align-items: center;
+  padding: 5rem 0 5.5rem;
+  z-index: 1;
+}
+
+.hero-slide.active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+.hero-slide-flex {
+  width: 100%;
+}
+
+.hero-slide-wide {
+  max-width: 980px;
+}
+
+/* Brands Chips Row */
+.hero-brands-chips-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.hero-brands-label {
+  color: #EBD6B5;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 0.25rem;
+}
+
+.hero-brand-pill {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.25rem 0.8rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+}
+
+.hero-brand-pill:hover {
+  background: rgba(212, 116, 44, 0.3);
+  border-color: var(--color-accent);
+}
+
+/* Slide 2: Apparel Subcategories scroller */
+.hero-subcategories-scroller {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-subcat-badge {
+  background: rgba(199, 164, 106, 0.18);
+  color: #F8ECD8;
+  border: 1px solid rgba(199, 164, 106, 0.4);
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+
+/* Slide 2: Mini Category Thumbnails Preview */
+.hero-categories-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .hero-categories-preview-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.hero-mini-cat-card {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-mini-cat-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  border-color: var(--color-accent);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+}
+
+.hero-mini-cat-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-mini-cat-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(7, 26, 16, 0.95) 85%);
+  padding: 0.4rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-mini-cat-name {
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero-mini-cat-count {
+  color: #F1C40F;
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+/* Slide 3: Fabrics Showcase Grid */
+.hero-fabrics-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .hero-fabrics-showcase-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.hero-fabric-pill-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(4px);
+}
+
+.hero-fabric-pill-card:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.hero-fabric-pill-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+
+.hero-fabric-name {
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.hero-fabric-badge {
+  background: rgba(212, 116, 44, 0.3);
+  color: #F8C39B;
+  border: 1px solid rgba(212, 116, 44, 0.6);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+}
+
+.hero-fabric-preview-varieties {
+  color: #D3DDD7;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  margin: 0;
+}
+
+/* Hero Carousel Arrow Controls */
+.hero-arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(14, 51, 32, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(6px);
+}
+
+.hero-arrow-btn:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #FFFFFF;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.hero-arrow-prev {
+  left: 1.5rem;
+}
+
+.hero-arrow-next {
+  right: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .hero-arrow-btn {
+    display: none;
+  }
+}
+
+/* Hero Carousel Pagination Dots */
+.hero-carousel-dots {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  z-index: 10;
+}
+
+.hero-dot {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #C2D5C9;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.45rem 1.15rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(4px);
+}
+
+.hero-dot:hover {
+  background: rgba(255, 255, 255, 0.35);
+  color: #FFFFFF;
+}
+
+.hero-dot.active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(212, 116, 44, 0.4);
+}
+
+@media (max-width: 640px) {
+  .hero-dot .dot-label {
+    font-size: 0.74rem;
+  }
+  .hero-dot {
+    padding: 0.35rem 0.75rem;
+  }
+}
+
+/* WhatsApp Hero CTA Button */
+.btn-whatsapp-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #25D366;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-whatsapp-hero:hover {
+  background-color: #20BA59;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   CATALOG MODE SWITCHER & FABRICS DISPLAY STYLES
+   ========================================================================== */
+.catalog-mode-switcher-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.catalog-mode-pill-box {
+  display: inline-flex;
+  background: #EAF1EC;
+  padding: 0.4rem;
+  border-radius: 9999px;
+  gap: 0.4rem;
+  border: 1px solid var(--color-border);
+}
+
+.catalog-mode-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 9999px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.catalog-mode-btn:hover {
+  color: var(--color-primary);
+}
+
+.catalog-mode-btn.active {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(14, 51, 32, 0.25);
+}
+
+@media (max-width: 640px) {
+  .catalog-mode-pill-box {
+    flex-direction: column;
+    width: 100%;
+    border-radius: 12px;
+  }
+  .catalog-mode-btn {
+    width: 100%;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    padding: 0.6rem 0.9rem;
+  }
+}
+
+/* Fabric Cards Grid */
+.fabrics-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .fabrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .fabrics-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.fabric-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 2px 10px rgba(14, 51, 32, 0.04);
+}
+
+.fabric-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-accent);
+  box-shadow: 0 16px 36px rgba(14, 51, 32, 0.12);
+}
+
+.fabric-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.85rem;
+}
+
+.fabric-card-num-box {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.fabric-num {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.fabric-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 0.15rem;
+}
+
+.fabric-count-badge {
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-primary-border);
+}
+
+.fabric-inquire-icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-accent-subtle);
+  color: var(--color-accent-dark);
+  border: 1px solid var(--color-accent-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fabric-inquire-icon-btn:hover {
+  background: var(--color-accent);
+  color: #FFFFFF;
+  border-color: var(--color-accent);
+  transform: scale(1.1);
+}
+
+.fabric-tagline {
+  color: var(--color-accent-dark);
+  font-size: 0.86rem;
+  font-weight: 600;
+  margin-bottom: 0.65rem;
+  line-height: 1.4;
+}
+
+.fabric-desc {
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.fabric-varieties-box {
+  background: #F8FAF9;
+  border: 1px solid #E3ECE6;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.fabric-varieties-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.65rem;
+}
+
+.fabric-chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.fabric-variety-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #FFFFFF;
+  border: 1px solid #D5E2DA;
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.78rem;
+  color: var(--color-text-main);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fabric-variety-chip:hover {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.fabric-variety-chip .chip-bullet {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.fabric-variety-chip .chip-tag {
+  background: rgba(212, 116, 44, 0.12);
+  color: var(--color-accent-dark);
+  font-size: 0.65rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+.fabric-card-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  margin-top: auto;
+}
+
+.fabric-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  padding: 0.55rem 0.75rem;
+}
+
+/* Fabric Modal Styles */
+.fabric-modal-icon-badge {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fabric-spec-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .fabric-spec-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.fabric-spec-tile {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.15rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.fabric-spec-tile:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 6px 18px rgba(14, 51, 32, 0.08);
+  transform: translateY(-2px);
+}
+
+.fabric-spec-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.fabric-spec-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.fabric-spec-desc {
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin-bottom: 0.85rem;
+  flex: 1;
+}
+
+.fabric-spec-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--color-accent-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+

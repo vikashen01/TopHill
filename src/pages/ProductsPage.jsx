@@ -6,17 +6,19 @@ import {
   ShieldCheck, 
   Scissors, 
   Layers, 
-  ShoppingBag,
-  HelpCircle,
-  Truck,
-  FileCheck
+  ShoppingBag, 
+  HelpCircle, 
+  Truck, 
+  FileCheck,
+  Send
 } from 'lucide-react';
 import OurProductsSection from '../components/OurProductsSection';
 import TopBrandsShowcase from '../components/TopBrandsShowcase';
 import { WESTERN_WEAR_CATEGORIES } from '../data/westernWearCategories';
+import { FABRIC_CATEGORIES } from '../data/fabricCategories';
 
 export default function ProductsPage({ navigateTo, onSelectPlan, setInquiryType }) {
-  const [activeAccordion, setActiveAccordion] = useState(null);
+  const [activeDirectoryTab, setActiveDirectoryTab] = useState('garments'); // 'garments' | 'fabrics'
 
   const handleNav = (routeId) => {
     navigateTo(routeId);
@@ -30,10 +32,6 @@ export default function ProductsPage({ navigateTo, onSelectPlan, setInquiryType 
     handleNav('contact');
   };
 
-  const toggleAccordion = (catId) => {
-    setActiveAccordion(prev => prev === catId ? null : catId);
-  };
-
   return (
     <div className="page-products animate-fade-in">
       
@@ -42,23 +40,27 @@ export default function ProductsPage({ navigateTo, onSelectPlan, setInquiryType 
         <div className="site-container">
           <div className="page-hero-content">
             <span className="section-tag">Manufacturing &amp; Marketplace Catalog</span>
-            <h1 className="page-hero-title">Western Wear — Product Categories</h1>
+            <h1 className="page-hero-title">Apparel Collections &amp; Fabric Sourcing</h1>
             <p className="page-hero-subtitle">
-              Comprehensive apparel manufacturing, tech-pack development, and catalog ingestion covering 11 core product categories and 88 high-demand styles for top brands on Myntra.
+              Comprehensive garment manufacturing, tech-pack development, and mill-direct textile sourcing covering 11 core apparel categories (88 styles) and 6 commercial fabric categories (27 varieties).
             </p>
 
             <div className="products-hero-metrics">
               <div className="hero-metric-pill">
                 <span className="metric-pill-num">11</span>
-                <span className="metric-pill-label">Core Categories</span>
+                <span className="metric-pill-label">Apparel Categories</span>
               </div>
               <div className="hero-metric-pill">
                 <span className="metric-pill-num">88</span>
                 <span className="metric-pill-label">Curated Styles</span>
               </div>
               <div className="hero-metric-pill">
-                <span className="metric-pill-num">XS–3XL</span>
-                <span className="metric-pill-label">Graded Tech-Packs</span>
+                <span className="metric-pill-num">6</span>
+                <span className="metric-pill-label">Fabric Families</span>
+              </div>
+              <div className="hero-metric-pill">
+                <span className="metric-pill-num">27</span>
+                <span className="metric-pill-label">Mill Weaves</span>
               </div>
               <div className="hero-metric-pill">
                 <span className="metric-pill-num">100%</span>
@@ -69,66 +71,141 @@ export default function ProductsPage({ navigateTo, onSelectPlan, setInquiryType 
         </div>
       </section>
 
-      {/* Main Interactive Categories Section */}
+      {/* Main Interactive Products & Fabrics Section */}
       <OurProductsSection onInquire={handleInquire} />
 
       {/* Complete Category & Subcategory Master Directory */}
       <section className="section-spacing bg-beige">
         <div className="site-container">
-          <div className="section-header text-center" style={{ maxWidth: '780px', margin: '0 auto 2.5rem' }}>
+          <div className="section-header text-center" style={{ maxWidth: '820px', margin: '0 auto 2.5rem' }}>
             <div className="section-tag tag-gold" style={{ display: 'inline-flex', marginBottom: '0.75rem' }}>
               <Layers size={14} />
               <span>Complete Master Directory</span>
             </div>
-            <h2 className="section-title">All Categories &amp; Subcategories At A Glance</h2>
+            <h2 className="section-title">All Categories &amp; Specifications At A Glance</h2>
             <p className="section-description">
-              Browse the complete hierarchical catalogue reference. Click on any subcategory to request instant tech-pack specifications or bulk production estimates.
+              Browse the complete hierarchical catalogue reference. Click on any style or fabric variety to request instant tech-pack specifications or bulk production estimates.
             </p>
-          </div>
 
-          <div className="ww-directory-grid">
-            {WESTERN_WEAR_CATEGORIES.map((cat) => (
-              <div key={cat.id} className="ww-dir-card">
-                <div className="ww-dir-header">
-                  <div className="ww-dir-title-row">
-                    <span className="ww-dir-num">{cat.number}</span>
-                    <h3 className="ww-dir-title">{cat.name}</h3>
-                  </div>
-                  <span className="ww-dir-count">{cat.totalCount} styles</span>
-                </div>
-
-                <div className="ww-dir-body">
-                  <ul className="ww-dir-list">
-                    {cat.subcategories.map((sub, sIdx) => (
-                      <li key={sIdx} className="ww-dir-item">
-                        <button 
-                          type="button" 
-                          className="ww-dir-sub-link"
-                          onClick={() => handleInquire(`Product Inquiry: Western Wear - ${cat.name} (${sub.name})`)}
-                          title={`Inquire about ${sub.name}`}
-                        >
-                          <span className="ww-dir-sub-bullet">•</span>
-                          <span className="ww-dir-sub-text">{sub.name}</span>
-                          {sub.tag && <span className="ww-dir-tag">{sub.tag}</span>}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="ww-dir-footer">
-                  <button 
-                    type="button" 
-                    className="ww-dir-action-btn"
-                    onClick={() => handleInquire(`Product Inquiry: Western Wear - ${cat.name} Master Collection`)}
-                  >
-                    <span>Inquire {cat.name}</span>
-                    <ArrowRight size={13} />
-                  </button>
-                </div>
+            {/* Directory Switcher Tabs */}
+            <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'center' }}>
+              <div className="catalog-mode-pill-box">
+                <button
+                  type="button"
+                  className={`catalog-mode-btn ${activeDirectoryTab === 'garments' ? 'active' : ''}`}
+                  onClick={() => setActiveDirectoryTab('garments')}
+                >
+                  <ShoppingBag size={16} />
+                  <span>Western Wear Styles (88)</span>
+                </button>
+                <button
+                  type="button"
+                  className={`catalog-mode-btn ${activeDirectoryTab === 'fabrics' ? 'active' : ''}`}
+                  onClick={() => setActiveDirectoryTab('fabrics')}
+                >
+                  <Layers size={16} />
+                  <span>Fabric Varieties (27)</span>
+                </button>
               </div>
-            ))}
+            </div>
           </div>
+
+          {/* Directory View 1: Garments */}
+          {activeDirectoryTab === 'garments' && (
+            <div className="ww-directory-grid animate-fade-in">
+              {WESTERN_WEAR_CATEGORIES.map((cat) => (
+                <div key={cat.id} className="ww-dir-card">
+                  <div className="ww-dir-header">
+                    <div className="ww-dir-title-row">
+                      <span className="ww-dir-num">{cat.number}</span>
+                      <h3 className="ww-dir-title">{cat.name}</h3>
+                    </div>
+                    <span className="ww-dir-count">{cat.totalCount} styles</span>
+                  </div>
+
+                  <div className="ww-dir-body">
+                    <ul className="ww-dir-list">
+                      {cat.subcategories.map((sub, sIdx) => (
+                        <li key={sIdx} className="ww-dir-item">
+                          <button 
+                            type="button" 
+                            className="ww-dir-sub-link"
+                            onClick={() => handleInquire(`Product Inquiry: Western Wear - ${cat.name} (${sub.name})`)}
+                            title={`Inquire about ${sub.name}`}
+                          >
+                            <span className="ww-dir-sub-bullet">•</span>
+                            <span className="ww-dir-sub-text">{sub.name}</span>
+                            {sub.tag && <span className="ww-dir-tag">{sub.tag}</span>}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="ww-dir-footer">
+                    <button 
+                      type="button" 
+                      className="ww-dir-action-btn"
+                      onClick={() => handleInquire(`Product Inquiry: Western Wear - ${cat.name} Master Collection`)}
+                    >
+                      <span>Inquire {cat.name}</span>
+                      <ArrowRight size={13} />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Directory View 2: Fabrics */}
+          {activeDirectoryTab === 'fabrics' && (
+            <div className="ww-directory-grid animate-fade-in">
+              {FABRIC_CATEGORIES.map((cat) => (
+                <div key={cat.id} className="ww-dir-card">
+                  <div className="ww-dir-header">
+                    <div className="ww-dir-title-row">
+                      <span className="ww-dir-num">{cat.number}</span>
+                      <h3 className="ww-dir-title">{cat.name}</h3>
+                    </div>
+                    <span className="ww-dir-count">{cat.totalCount} weaves</span>
+                  </div>
+
+                  <div className="ww-dir-body">
+                    <p style={{ fontSize: '0.82rem', color: 'var(--color-text-muted)', marginBottom: '0.85rem' }}>
+                      {cat.tagline}
+                    </p>
+                    <ul className="ww-dir-list">
+                      {cat.varieties.map((v, vIdx) => (
+                        <li key={vIdx} className="ww-dir-item">
+                          <button 
+                            type="button" 
+                            className="ww-dir-sub-link"
+                            onClick={() => handleInquire(`Fabric Sourcing Inquiry: ${cat.name} - ${v.name}`)}
+                            title={`Inquire about ${v.name}`}
+                          >
+                            <span className="ww-dir-sub-bullet">•</span>
+                            <span className="ww-dir-sub-text">{v.name}</span>
+                            {v.tag && <span className="ww-dir-tag">{v.tag}</span>}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="ww-dir-footer">
+                    <button 
+                      type="button" 
+                      className="ww-dir-action-btn"
+                      onClick={() => handleInquire(`Fabric Sourcing Inquiry: ${cat.name} Range`)}
+                    >
+                      <span>Inquire {cat.name}</span>
+                      <ArrowRight size={13} />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -137,9 +214,9 @@ export default function ProductsPage({ navigateTo, onSelectPlan, setInquiryType 
         <div className="site-container">
           <div className="section-header text-center" style={{ maxWidth: '750px', margin: '0 auto 2.5rem' }}>
             <div className="section-tag">Quality Assurance</div>
-            <h2 className="section-title">Rigid Standards Across All 88 Styles</h2>
+            <h2 className="section-title">Rigid Standards Across Garments &amp; Fabrics</h2>
             <p className="section-description">
-              Every garment manufactured through our network adheres to top marketplace benchmarks, ensuring seamless QC approvals and minimal returns.
+              Every garment and textile lot manufactured through our network adheres to top marketplace benchmarks, ensuring seamless QC approvals and minimal returns.
             </p>
           </div>
 
