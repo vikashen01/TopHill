@@ -2221,11 +2221,12 @@
 }
 
 /* ==========================================================================
-   HERO CAROUSEL & MULTI-SLIDE STYLES
+   HERO CAROUSEL & MULTI-SLIDE STYLES (Full-Width 2-Column Balanced Layout)
    ========================================================================== */
 .hero-carousel-section {
   position: relative;
   min-height: 85vh;
+  width: 100%;
   display: flex;
   align-items: center;
   background-color: #071E12;
@@ -2236,37 +2237,75 @@
   position: relative;
   width: 100%;
   min-height: 85vh;
-  display: flex;
+  display: block;
 }
 
 .hero-slide {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.65s ease;
   display: flex;
   align-items: center;
-  padding: 5rem 0 5.5rem;
+  padding: 4.5rem 0 5.5rem;
   z-index: 1;
 }
 
 .hero-slide.active {
   position: relative;
+  width: 100%;
+  min-height: 85vh;
   opacity: 1;
   visibility: visible;
   z-index: 2;
 }
 
-.hero-slide-flex {
+/* Wide Container for Full-Bleed Balanced Look */
+.hero-container-wide {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 640px) {
+  .hero-container-wide {
+    padding: 0 1.25rem;
+  }
+}
+
+.hero-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
   width: 100%;
 }
 
-.hero-slide-wide {
-  max-width: 980px;
+@media (min-width: 1024px) {
+  .hero-grid-2col {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 3.5rem;
+  }
+}
+
+.hero-content-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-showcase-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 }
 
 /* Brands Chips Row */
@@ -2304,6 +2343,103 @@
   border-color: var(--color-accent);
 }
 
+/* Slide 1 Right: Partner Feature Grid */
+.hero-partner-feature-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 600px) {
+  .hero-partner-feature-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.hero-feature-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  transition: all 0.25s ease;
+}
+
+.hero-feature-card:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.hero-feature-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(212, 116, 44, 0.25);
+  color: #F8C39B;
+  border: 1px solid rgba(212, 116, 44, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hero-feature-title {
+  color: #FFFFFF;
+  font-size: 0.98rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.hero-feature-desc {
+  color: #D3DDD7;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Slide 1 Right: Stats Strip */
+.hero-stats-strip {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(199, 164, 106, 0.35);
+  border-radius: 12px;
+  padding: 0.9rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  backdrop-filter: blur(6px);
+}
+
+.hero-stat-box {
+  text-align: center;
+}
+
+.hero-stat-number {
+  display: block;
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #F1C40F;
+  line-height: 1.1;
+}
+
+.hero-stat-text {
+  font-size: 0.72rem;
+  color: #EBD6B5;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hero-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
 /* Slide 2: Apparel Subcategories scroller */
 .hero-subcategories-scroller {
   display: flex;
@@ -2323,128 +2459,162 @@
   backdrop-filter: blur(4px);
 }
 
-/* Slide 2: Mini Category Thumbnails Preview */
-.hero-categories-preview-grid {
+/* Slide 2 Right: Category Photo Cards Grid */
+.hero-categories-photo-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.85rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
 
-@media (min-width: 640px) {
-  .hero-categories-preview-grid {
-    grid-template-columns: repeat(6, 1fr);
+@media (min-width: 600px) {
+  .hero-categories-photo-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-.hero-mini-cat-card {
+.hero-cat-photo-card {
   position: relative;
   aspect-ratio: 3 / 4;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.25);
   cursor: pointer;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.hero-mini-cat-card:hover {
-  transform: translateY(-4px) scale(1.03);
+.hero-cat-photo-card:hover {
+  transform: translateY(-6px) scale(1.02);
   border-color: var(--color-accent);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
 }
 
-.hero-mini-cat-img {
+.hero-cat-photo-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.hero-mini-cat-overlay {
+.hero-cat-photo-overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(7, 26, 16, 0.95) 85%);
-  padding: 0.4rem 0.5rem;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 26, 16, 0.15) 0%, rgba(7, 26, 16, 0.95) 85%);
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+  padding: 0.85rem;
 }
 
-.hero-mini-cat-name {
-  color: #FFFFFF;
-  font-size: 0.75rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.hero-mini-cat-count {
-  color: #F1C40F;
-  font-size: 0.65rem;
-  font-weight: 600;
-}
-
-/* Slide 3: Fabrics Showcase Grid */
-.hero-fabrics-showcase-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.85rem;
-  margin-bottom: 2rem;
-}
-
-@media (min-width: 768px) {
-  .hero-fabrics-showcase-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.hero-fabric-pill-card {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  padding: 0.9rem 1.1rem;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  backdrop-filter: blur(4px);
-}
-
-.hero-fabric-pill-card:hover {
-  background: rgba(255, 255, 255, 0.16);
-  border-color: var(--color-accent);
-  transform: translateY(-2px);
-}
-
-.hero-fabric-pill-head {
+.hero-cat-photo-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 
-.hero-fabric-name {
-  color: #FFFFFF;
-  font-size: 1rem;
+.hero-cat-num {
+  font-size: 0.75rem;
   font-weight: 800;
-  letter-spacing: 0.02em;
+  color: #F1C40F;
 }
 
-.hero-fabric-badge {
-  background: rgba(212, 116, 44, 0.3);
-  color: #F8C39B;
-  border: 1px solid rgba(212, 116, 44, 0.6);
-  font-size: 0.72rem;
+.hero-cat-count-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  font-size: 0.68rem;
   font-weight: 700;
-  padding: 0.15rem 0.55rem;
+  padding: 0.15rem 0.45rem;
   border-radius: 9999px;
 }
 
-.hero-fabric-preview-varieties {
+.hero-cat-photo-title {
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-bottom: 0.15rem;
+}
+
+.hero-cat-photo-sub {
   color: #D3DDD7;
+  font-size: 0.72rem;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Slide 3 Right: Fabrics Cards Grid (2x3) */
+.hero-fabrics-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+@media (min-width: 600px) {
+  .hero-fabrics-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.hero-fabric-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  padding: 1.1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.hero-fabric-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--color-accent);
+  transform: translateY(-3px);
+}
+
+.hero-fabric-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.hero-fabric-card-num {
   font-size: 0.8rem;
-  line-height: 1.35;
+  font-weight: 800;
+  color: var(--color-accent);
+}
+
+.hero-fabric-card-name {
+  color: #FFFFFF;
+  font-size: 0.98rem;
+  font-weight: 800;
   margin: 0;
 }
 
-/* Hero Carousel Arrow Controls */
+.hero-fabric-card-badge {
+  background: rgba(212, 116, 44, 0.3);
+  color: #F8C39B;
+  border: 1px solid rgba(212, 116, 44, 0.5);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 9999px;
+}
+
+.hero-fabric-varieties-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.hero-fabric-chip {
+  background: rgba(255, 255, 255, 0.12);
+  color: #E2ECE5;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* Outer Arrow Controls (Only for ultra-wide displays >= 1440px) */
 .hero-arrow-btn {
   position: absolute;
   top: 50%;
@@ -2479,38 +2649,68 @@
   right: 1.5rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1439px) {
   .hero-arrow-btn {
     display: none;
   }
 }
 
-/* Hero Carousel Pagination Dots */
-.hero-carousel-dots {
+/* Bottom Controls Bar (Arrows + Dots Never Overlap Text) */
+.hero-bottom-controls-bar {
   position: absolute;
   bottom: 1.25rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
+  align-items: center;
   gap: 0.75rem;
   z-index: 10;
+  background: rgba(7, 26, 16, 0.75);
+  padding: 0.35rem 0.6rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.hero-bottom-arrow-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hero-bottom-arrow-btn:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: scale(1.08);
+}
+
+.hero-carousel-dots {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .hero-dot {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: #C2D5C9;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  padding: 0.45rem 1.15rem;
+  padding: 0.4rem 1rem;
   border-radius: 9999px;
   cursor: pointer;
   transition: all 0.25s ease;
-  backdrop-filter: blur(4px);
 }
 
 .hero-dot:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.3);
   color: #FFFFFF;
 }
 
@@ -2522,11 +2722,15 @@
 }
 
 @media (max-width: 640px) {
+  .hero-bottom-controls-bar {
+    width: 92%;
+    justify-content: space-between;
+  }
   .hero-dot .dot-label {
-    font-size: 0.74rem;
+    font-size: 0.72rem;
   }
   .hero-dot {
-    padding: 0.35rem 0.75rem;
+    padding: 0.3rem 0.6rem;
   }
 }
 
