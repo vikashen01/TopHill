@@ -63,11 +63,19 @@ export default function TermsPage({ navigateTo }) {
                 </div>
                 <div className="info-row">
                   <div className="info-cell-label">Email:</div>
-                  <div className="info-cell-value">tophilltextile26@gmail.com</div>
+                  <div className="info-cell-value">
+                    <a href="mailto:tophilltextile26@gmail.com" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
+                      tophilltextile26@gmail.com
+                    </a>
+                  </div>
                 </div>
                 <div className="info-row">
                   <div className="info-cell-label">Contact Phone:</div>
-                  <div className="info-cell-value">+91 93153 31798</div>
+                  <div className="info-cell-value">
+                    <a href="tel:+919315331798" style={{ color: 'var(--color-primary)', textDecoration: 'underline', fontWeight: 600 }}>
+                      +91 93153 31798
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

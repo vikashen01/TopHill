@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Mail, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Menu, X, Phone, Mail, ArrowRight, ShieldCheck, MessageCircle } from 'lucide-react';
 import { InstagramIcon as Instagram, FacebookIcon as Facebook } from './SocialIcons';
 import BrandLogo from './BrandLogo';
 
@@ -203,6 +203,16 @@ export default function Header({ currentRoute, navigateTo }) {
                 <span>Contact Our Team</span>
                 <ArrowRight size={16} />
               </button>
+              <a
+                href="https://wa.me/919315331798?text=Hello%20TopHill%20Textile,%20I%20would%20like%20to%20inquire%20about%20your%20services%20and%20Myntra%20plans."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-whatsapp"
+                style={{ width: '100%', marginTop: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+              >
+                <MessageCircle size={18} />
+                <span>Chat on WhatsApp: +91 93153 31798</span>
+              </a>
             </div>
 
             <div className="mobile-menu-info">
@@ -211,8 +221,18 @@ export default function Header({ currentRoute, navigateTo }) {
                 Sector 63, Noida, Uttar Pradesh - 201301
               </p>
               <p className="mobile-info-text"><strong>GSTIN:</strong> 09AAMCT5200E1ZH</p>
-              <p className="mobile-info-text"><strong>Email:</strong> tophilltextile26@gmail.com</p>
-              <p className="mobile-info-text"><strong>Phone:</strong> +91 93153 31798</p>
+              <p className="mobile-info-text">
+                <strong>Email:</strong>{' '}
+                <a href="mailto:tophilltextile26@gmail.com" style={{ color: 'inherit', textDecoration: 'underline' }}>
+                  tophilltextile26@gmail.com
+                </a>
+              </p>
+              <p className="mobile-info-text">
+                <strong>Phone:</strong>{' '}
+                <a href="tel:+919315331798" style={{ color: 'inherit', textDecoration: 'underline', fontWeight: 600 }}>
+                  +91 93153 31798
+                </a>
+              </p>
             </div>
           </div>
         </div>

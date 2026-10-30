@@ -3074,3 +3074,141 @@
   font-weight: 700;
 }
 
+/* ==========================================================================
+   FLOATING QUICK CONTACT DESK (+91 93153 31798)
+   ========================================================================== */
+.floating-contact-container {
+  position: fixed;
+  bottom: 1.75rem;
+  left: 1.75rem;
+  z-index: 98;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.floating-whatsapp-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: linear-gradient(135deg, #25D366 0%, #1da851 100%);
+  color: #ffffff;
+  padding: 0.65rem 1.15rem 0.65rem 0.85rem;
+  border-radius: 9999px;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35), 0 2px 6px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.floating-whatsapp-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.45), 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+}
+
+.floating-pulse-ring {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 9999px;
+  border: 2px solid rgba(37, 211, 102, 0.6);
+  animation: wa-ring-pulse 2.2s infinite ease-out;
+  pointer-events: none;
+}
+
+@keyframes wa-ring-pulse {
+  0% {
+    transform: scale(0.96);
+    opacity: 0.8;
+  }
+  60% {
+    transform: scale(1.08);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.12);
+    opacity: 0;
+  }
+}
+
+.floating-wa-icon {
+  flex-shrink: 0;
+}
+
+.floating-wa-label {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.floating-wa-status {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.floating-wa-status::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+.floating-wa-number {
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.floating-call-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-accent);
+  border: 1.5px solid var(--color-accent);
+  box-shadow: 0 6px 18px rgba(14, 51, 32, 0.3);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.floating-call-btn:hover {
+  background: var(--color-accent);
+  color: #1a1a1a;
+  transform: translateY(-3px) scale(1.05);
+}
+
+@media (max-width: 640px) {
+  .floating-contact-container {
+    bottom: 1.25rem;
+    left: 1rem;
+    gap: 0.4rem;
+  }
+  .floating-wa-label {
+    display: none;
+  }
+  .floating-whatsapp-btn {
+    padding: 0.7rem;
+    border-radius: 50%;
+  }
+  .floating-call-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
