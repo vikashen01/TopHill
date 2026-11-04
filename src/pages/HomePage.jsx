@@ -17,6 +17,7 @@ import TopBrandsShowcase from '../components/TopBrandsShowcase';
 import MyntraPlans from '../components/MyntraPlans';
 import OurProductsSection from '../components/OurProductsSection';
 import HeroCarousel from '../components/HeroCarousel';
+import FabricSection from '../components/FabricSection';
 
 export default function HomePage({ navigateTo, onSelectPlan, setInquiryType }) {
   const handleNav = (routeId) => {
@@ -119,6 +120,17 @@ export default function HomePage({ navigateTo, onSelectPlan, setInquiryType }) {
           1. Women Garments 2. Grey Fabrics 3. Denim 4. Woven Fabrics 5. Cotton Fabrics
           ========================================================================= */}
       <OurProductsSection 
+        onInquire={(subject) => {
+          if (setInquiryType) setInquiryType(subject);
+          handleNav('contact');
+        }}
+      />
+
+      {/* =========================================================================
+          FABRICS & MATERIAL PORTFOLIO SECTION
+          6 Fabric Families: Cotton, Viscose, Polyester, Linen, Knitted, Denim
+          ========================================================================= */}
+      <FabricSection
         onInquire={(subject) => {
           if (setInquiryType) setInquiryType(subject);
           handleNav('contact');

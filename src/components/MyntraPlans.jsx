@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import { 
-  Star, 
-  Crown, 
-  Building, 
-  Package, 
-  ShieldCheck, 
-  Users, 
-  Percent, 
-  Camera, 
-  TrendingUp, 
-  Headphones, 
-  Truck, 
-  FileText, 
-  Sparkles, 
-  Gift, 
-  ArrowRight, 
+import {
+  Star,
+  Crown,
+  Building,
+  Package,
+  ShieldCheck,
+  Users,
+  Percent,
+  Camera,
+  TrendingUp,
+  Headphones,
+  Truck,
+  FileText,
+  Sparkles,
+  Gift,
+  ArrowRight,
   CheckCircle2,
   Image as ImageIcon
 } from 'lucide-react';
@@ -137,8 +137,8 @@ export default function MyntraPlans({ onSelectPlan }) {
           </p>
 
           <div style={{ marginTop: '1rem', display: 'flex', gap: '0.75rem', justifyContent: 'center' }}>
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="btn btn-outline-burgundy btn-sm"
               onClick={() => setShowGraphicModal(true)}
               style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
@@ -154,8 +154,8 @@ export default function MyntraPlans({ onSelectPlan }) {
           {plans.map((plan) => {
             const PlanIcon = plan.icon;
             return (
-              <div 
-                key={plan.id} 
+              <div
+                key={plan.id}
                 className={`myntra-plan-card ${plan.isPopular ? 'popular-plan' : ''}`}
                 style={{ borderColor: plan.isPopular ? plan.themeColor : 'var(--color-border)' }}
               >
@@ -178,10 +178,10 @@ export default function MyntraPlans({ onSelectPlan }) {
                 {/* Price & SKU Bar */}
                 <div className="plan-pricing-box">
                   <div className="plan-price-text">{plan.price}</div>
-                  <div 
+                  <div
                     className="plan-sku-pill"
-                    style={{ 
-                      backgroundColor: plan.accentBadgeBg, 
+                    style={{
+                      backgroundColor: plan.accentBadgeBg,
                       color: plan.accentBadgeColor,
                       border: `1px solid ${plan.badgeBorder}`
                     }}
@@ -196,8 +196,8 @@ export default function MyntraPlans({ onSelectPlan }) {
                     const FeatIcon = item.icon;
                     return (
                       <li key={fIdx} className="plan-feature-row">
-                        <span 
-                          className="feat-icon-bullet" 
+                        <span
+                          className="feat-icon-bullet"
                           style={{ color: plan.themeColor }}
                         >
                           <FeatIcon size={16} />
@@ -267,18 +267,18 @@ export default function MyntraPlans({ onSelectPlan }) {
 
       {/* Official Poster Modal */}
       {showGraphicModal && (
-        <div 
-          className="plans-modal-overlay" 
+        <div
+          className="plans-modal-overlay"
           onClick={() => setShowGraphicModal(false)}
         >
-          <div 
+          <div
             className="plans-modal-content"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="plans-modal-header">
               <h4>Official Myntra Business Plans Chart</h4>
-              <button 
-                type="button" 
+              <button
+                type="button"
                 className="btn-close-modal"
                 onClick={() => setShowGraphicModal(false)}
               >
@@ -286,9 +286,9 @@ export default function MyntraPlans({ onSelectPlan }) {
               </button>
             </div>
             <div className="plans-modal-body">
-              <img 
-                src="/images/myntra-plans.png" 
-                alt="Myntra Business Plans - Sell Top Brands On Myntra" 
+              <img
+                src="/images/myntra-plans.png"
+                alt="Myntra Business Plans - Sell Top Brands On Myntra"
                 style={{ width: '100%', height: 'auto', borderRadius: '6px' }}
               />
             </div>
