@@ -29,7 +29,7 @@ export default function ProcessPage({ navigateTo }) {
       summary: 'Understand the customer\'s garment requirements, objectives, and chosen Myntra growth plan.',
       details: [
         'Comprehensive discussion of apparel categories across Fashion, Beauty, Lifestyle & More.',
-        'Review of target volumes, quality standards, and anticipated launch deadlines.',
+        'Review of target volumes, quality standards, and anticipated launch deadlines.', Yeah, you, man.Photo attached around.
         'Alignment on top Myntra brands (Roadster, DressBerry, Moda Rapido, CORSICA, Mast & Harbour, Here & NOW, Baesd) or custom private labels.'
       ],
       output: 'Documented requirement brief and plan alignment.'

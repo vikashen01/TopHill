@@ -54,11 +54,11 @@ export default function TopBrandsShowcase({ onExplorePlans, onInquire }) {
         <div className="section-header">
           <div className="section-tag tag-gold">
             <Sparkles size={14} />
-            <span>Garment Manufacturing for Top Myntra Brands</span>
+            <span>Premium Myntra Label Manufacturer</span>
           </div>
 
           <h2 className="section-title">
-            We Manufacture Clothes for Top Brands of Myntra
+            We are a clothing manufacturer for premium labels available on Myntra
           </h2>
 
           <p className="section-description">
