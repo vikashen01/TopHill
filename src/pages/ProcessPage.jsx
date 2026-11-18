@@ -1,13 +1,13 @@
 import React from 'react';
-import { 
-  MessageSquare, 
-  FileSpreadsheet, 
-  Scissors, 
-  Camera, 
-  Store, 
-  Truck, 
-  CheckCircle2, 
-  AlertCircle, 
+import {
+  MessageSquare,
+  FileSpreadsheet,
+  Scissors,
+  Camera,
+  Store,
+  Truck,
+  CheckCircle2,
+  AlertCircle,
   ArrowRight,
   ShieldCheck,
   Sparkles
@@ -179,7 +179,7 @@ export default function ProcessPage({ navigateTo }) {
       </section>
 
       {/* Top Brands Showcase */}
-      <TopBrandsShowcase 
+      <TopBrandsShowcase
         onExplorePlans={() => handleNav('plans')}
         onInquire={() => handleNav('contact')}
       />
@@ -192,8 +192,8 @@ export default function ProcessPage({ navigateTo }) {
           <p style={{ maxWidth: '640px', margin: '0 auto 2.5rem auto' }}>
             Learn how TopHill Textile Pvt. Ltd. can coordinate garment manufacturing and guide your brand from onboarding through Myntra QC pass.
           </p>
-          <button 
-            type="button" 
+          <button
+            type="button"
             className="btn btn-primary btn-lg"
             onClick={() => handleNav('contact')}
           >
