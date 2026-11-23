@@ -250,15 +250,15 @@ export default function HeroCarousel({ onNavigate, onSelectPlan, onInquire }) {
               <div className="hero-content-col">
                 <div className="hero-badge">
                   <ShoppingBag size={14} className="gold-icon" />
-                  <span>Western Wear Range &bull; 11 Core Categories &bull; 88 Styles</span>
+                  <span>Western Wear Range &bull; 20 Top Categories &bull; 4000+ Styles</span>
                 </div>
 
                 <h1 className="hero-headline">
-                  COMPLETE APPAREL RANGE — <span className="highlight-yellow">11 CORE CATEGORIES</span> &amp; 88 STYLES
+                  COMPLETE APPAREL RANGE — <span className="highlight-yellow">20 TOP CATEGORIES</span> &amp; 4000+ STYLES
                 </h1>
 
                 <p className="hero-subheading">
-                  End-to-end garment manufacturing with precision tech-pack grading XS to 3XL. Complete production support across 11 core categories including Tops, Shirts, Dresses, Co-ord Sets, Office Wear, Skirts, Bottom Wear, Party Wear, T-Shirts, and Outerwear.
+                  End-to-end garment manufacturing with precision tech-pack grading XS to 3XL. Complete production support across 20 top categories including Tops, Shirts, Dresses, Co-ord Sets, Office Wear, Skirts, Bottom Wear, Party Wear, T-Shirts, and Outerwear.
                 </p>
 
                 {/* Subcategories Highlight Ribbon */}

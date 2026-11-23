@@ -7,44 +7,51 @@ export default function TopBrandsShowcase({ onExplorePlans, onInquire }) {
       name: 'Roadster',
       tag: 'Denim, Casual & Outerwear',
       image: '/images/brands/brand-roadster.png',
-      alt: 'The Roadster Life Co. Official Logo'
+      alt: 'The Roadster Life Co. Official Logo – manufactured by TopHill Textile',
+      myntraUrl: 'https://www.myntra.com/roadster'
     },
     {
       name: 'DressBerry',
-      tag: 'Contemporary Women’s Wear',
+      tag: "Contemporary Women's Wear",
       image: '/images/brands/brand-dressberry.png',
-      alt: 'DressBerry Official Logo'
+      alt: 'DressBerry Official Logo – manufactured by TopHill Textile',
+      myntraUrl: 'https://www.myntra.com/dressberry'
     },
     {
       name: 'Moda Rapido',
       tag: 'Fast Trend Apparel',
       image: '/images/brands/brand-modarapido.png',
-      alt: 'Moda Rapido Official Logo'
+      alt: 'Moda Rapido Official Logo – manufactured by TopHill Textile',
+      myntraUrl: 'https://www.myntra.com/moda-rapido'
     },
     {
       name: 'CORSICA',
       tag: 'Premium Western Styles',
       image: '/images/brands/brand-corsica.png',
-      alt: 'CORSICA Official Logo'
+      alt: 'CORSICA Official Logo – manufactured by TopHill Textile',
+      myntraUrl: 'https://www.myntra.com/corsica'
     },
     {
       name: 'Mast & Harbour',
       tag: 'Urban Casuals & Shirts',
       image: '/images/brands/brand-mastharbour.png',
-      alt: 'Mast & Harbour Official Logo'
+      alt: 'Mast & Harbour Official Logo – manufactured by TopHill Textile',
+      myntraUrl: 'https://www.myntra.com/mast-harbour'
     },
     {
       name: 'Here & NOW',
       tag: 'Youth & Streetwear',
       image: '/images/brands/brand-herenow.png',
-      alt: 'Here & NOW Official Logo',
-      isDark: true
+      alt: 'Here & NOW Official Logo – manufactured by TopHill Textile',
+      isDark: true,
+      myntraUrl: 'https://www.myntra.com/here-and-now'
     },
     {
       name: 'Baesd',
       tag: 'Modern Essentials',
       image: '/images/brands/brand-baesd.svg',
-      alt: 'BAESD Official Logo'
+      alt: 'BAESD Official Logo – manufactured by TopHill Textile',
+      myntraUrl: 'https://www.myntra.com/baesd'
     }
   ];
 
@@ -66,27 +73,35 @@ export default function TopBrandsShowcase({ onExplorePlans, onInquire }) {
           </p>
         </div>
 
-        {/* Brands Badges Grid with Official Logos On Top of Brand Names */}
+        {/* Brands Badges Grid — Each card is a clickable Myntra link */}
         <div className="top-brands-grid">
           {topBrands.map((b, idx) => (
-            <div key={idx} className="brand-card-item">
+            <a
+              key={idx}
+              href={b.myntraUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="brand-card-item"
+              title={`View ${b.name} on Myntra`}
+              style={{ textDecoration: 'none', cursor: 'pointer' }}
+            >
               <div className="brand-card-inner">
-                {/* Brand Logo on Top of Name */}
-                <div 
-                  className={`brand-logo-wrap ${b.isDark ? 'brand-logo-dark' : ''}`} 
-                  title={`${b.name} Official Label`}
+                {/* Brand Logo */}
+                <div
+                  className={`brand-logo-wrap ${b.isDark ? 'brand-logo-dark' : ''}`}
+                  title={`${b.name} on Myntra`}
                 >
-                  <img 
-                    src={b.image} 
-                    alt={b.alt} 
-                    className="brand-logo-img" 
+                  <img
+                    src={b.image}
+                    alt={b.alt}
+                    className="brand-logo-img"
                     loading="lazy"
                   />
                 </div>
                 <h3 className="brand-name-text">{b.name}</h3>
                 <span className="brand-category-tag">{b.tag}</span>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 
@@ -123,16 +138,16 @@ export default function TopBrandsShowcase({ onExplorePlans, onInquire }) {
 
         {/* Action Buttons */}
         <div style={{ marginTop: '2.5rem', textAlign: 'center', display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <button 
-            type="button" 
+          <button
+            type="button"
             className="btn btn-primary btn-lg"
             onClick={onExplorePlans}
           >
             <span>Explore Myntra Business Plans</span>
             <ArrowRight size={18} />
           </button>
-          <button 
-            type="button" 
+          <button
+            type="button"
             className="btn btn-secondary btn-lg"
             onClick={onInquire}
           >

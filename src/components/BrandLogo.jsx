@@ -20,7 +20,7 @@ export default function BrandLogo({ variant = 'default', onClick }) {
     >
       <div 
         style={{
-          height: isLight ? '48px' : '52px',
+          height: isLight ? '62px' : '68px',
           padding: '3px',
           borderRadius: '10px',
           backgroundColor: '#FFFFFF',
@@ -39,7 +39,7 @@ export default function BrandLogo({ variant = 'default', onClick }) {
           style={{
             height: '100%',
             width: 'auto',
-            maxHeight: isLight ? '42px' : '46px',
+            maxHeight: isLight ? '56px' : '62px',
             objectFit: 'contain',
             display: 'block',
           }}
