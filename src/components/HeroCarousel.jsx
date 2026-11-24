@@ -204,13 +204,13 @@ export default function HeroCarousel({ onNavigate, onSelectPlan, onInquire }) {
                 {/* Partnership Performance Banner */}
                 <div className="hero-stats-strip">
                   <div className="hero-stat-box">
-                    <span className="hero-stat-number">11</span>
-                    <span className="hero-stat-text">Core Categories</span>
+                    <span className="hero-stat-number">20</span>
+                    <span className="hero-stat-text">Top Categories</span>
                   </div>
                   <div className="hero-stat-divider" />
                   <div className="hero-stat-box">
-                    <span className="hero-stat-number">88</span>
-                    <span className="hero-stat-text">Western Styles</span>
+                    <span className="hero-stat-number">4000+</span>
+                    <span className="hero-stat-text">Styles</span>
                   </div>
                   <div className="hero-stat-divider" />
                   <div className="hero-stat-box">
@@ -506,7 +506,7 @@ export default function HeroCarousel({ onNavigate, onSelectPlan, onInquire }) {
             onClick={() => goToSlide(1)}
             aria-label="Slide 2: 20 Top CATEGORIES & 4000+ STYLES"
           >
-            <span className="dot-label">02. 88 Apparel Styles</span>
+            <span className="dot-label">02. 4000+ Styles</span>
           </button>
 
           <button
