@@ -230,7 +230,7 @@ export default function HeroCarousel({ onNavigate, onSelectPlan, onInquire }) {
         </div>
 
         {/* =========================================================================
-            SLIDE 2: COMPLETE APPAREL RANGE (11 CATEGORIES • 88 STYLES WITH PHOTOS)
+            SLIDE 2: COMPLETE APPAREL RANGE (20 Top CATEGORIES & 4000+ STYLES WITH PHOTOS)
             Full-Width Layout: Left Text & CTAs, Right Category Cards Grid with Photos
             ========================================================================= */}
         <div className={`hero-slide ${currentSlide === 1 ? 'active' : ''}`} aria-hidden={currentSlide !== 1}>
@@ -284,7 +284,7 @@ export default function HeroCarousel({ onNavigate, onSelectPlan, onInquire }) {
                     }}
                     className="btn btn-accent btn-lg"
                   >
-                    <span>Explore All 88 Styles</span>
+                    <span>Explore All 4000+ Styles</span>
                     <ArrowRight size={18} />
                   </button>
 
@@ -504,7 +504,7 @@ export default function HeroCarousel({ onNavigate, onSelectPlan, onInquire }) {
             aria-selected={currentSlide === 1}
             className={`hero-dot ${currentSlide === 1 ? 'active' : ''}`}
             onClick={() => goToSlide(1)}
-            aria-label="Slide 2: 11 Apparel Categories & 88 Styles"
+            aria-label="Slide 2: 20 Top CATEGORIES & 4000+ STYLES"
           >
             <span className="dot-label">02. 88 Apparel Styles</span>
           </button>

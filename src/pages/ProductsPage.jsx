@@ -42,7 +42,7 @@ export default function ProductsPage({ navigateTo, onSelectPlan, setInquiryType 
             <span className="section-tag">Manufacturing &amp; Marketplace Catalog</span>
             <h1 className="page-hero-title">Apparel Collections &amp; Fabric Sourcing</h1>
             <p className="page-hero-subtitle">
-              Comprehensive garment manufacturing, tech-pack development, and mill-direct textile sourcing covering 11 core apparel categories (88 styles) and 6 commercial fabric categories (27 varieties).
+              Comprehensive garment manufacturing, tech-pack development, and mill-direct textile sourcing covering 11 core apparel CATEGORIES & 4000+ STYLES) and 6 commercial fabric categories (27 varieties).
             </p>
 
             <div className="products-hero-metrics">

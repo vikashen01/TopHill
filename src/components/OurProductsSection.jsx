@@ -175,7 +175,7 @@ export default function OurProductsSection({ onInquire, onNavigateToContact, ini
           </h2>
 
           <p className="section-description" style={{ fontSize: '1.05rem', lineHeight: '1.6', color: 'var(--color-text-muted)' }}>
-            Explore our comprehensive range across finished Western Wear garments (11 core categories, 88 curated styles) and mill-direct Fabric sourcing (6 core categories, 27 fabric varieties).
+            Explore our comprehensive range across finished Western Wear garments (20 Top Categories, 88 curated styles) and mill-direct Fabric sourcing (6 core categories, 27 fabric varieties).
           </p>
 
           {/* Mode Switcher Tabs */}
@@ -188,7 +188,7 @@ export default function OurProductsSection({ onInquire, onNavigateToContact, ini
                 id="tab-btn-garments"
               >
                 <ShoppingBag size={18} />
-                <span>Western Wear (11 Categories &bull; 88 Styles)</span>
+                <span>Western Wear (20 Top CATEGORIES & 4000+ STYLES)</span>
               </button>
               <button
                 type="button"
@@ -326,7 +326,7 @@ export default function OurProductsSection({ onInquire, onNavigateToContact, ini
                   className="btn btn-outline-burgundy btn-sm"
                   onClick={() => { setSearchQuery(''); setActiveTab('all'); }}
                 >
-                  Show All 11 Categories
+                  Show All 20 Top Categories
                 </button>
               </div>
             )}

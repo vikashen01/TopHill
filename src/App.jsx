@@ -72,7 +72,7 @@ export default function App() {
         canonical: 'https://www.tophilltextile.com/#/plans'
       },
       'products': {
-        title: 'Our Products | Western Wear – 11 Categories & 88 Styles | TopHill Textile',
+        title: 'Our Products | Western Wear – 20 Top CATEGORIES & 4000+ STYLES | TopHill Textile',
         description: 'TopHill Textile products: 11 Western Wear categories (Tops, Shirts, Dresses, Co-ord Sets, Office Wear, Skirts, Bottom Wear, Party Wear, T-Shirts, Outerwear) and 6 fabric families. Mill-direct sourcing.',
         canonical: 'https://www.tophilltextile.com/#/products'
       },
